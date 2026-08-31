@@ -29,7 +29,7 @@ const zvyraznene = osetreni.zvyraznit === true;
   }
   .karta:hover {
     transform: translateY(-3px);
-    box-shadow: 0 16px 40px rgba(23, 48, 44, .10);
+    box-shadow: 0 16px 40px var(--stin);
     border-color: var(--rule);
   }
 
@@ -58,7 +58,7 @@ const zvyraznene = osetreni.zvyraznit === true;
     font-family: var(--mono);
     font-size: 1.02rem;
     font-weight: 500;
-    color: var(--honey);
+    color: var(--honey-text);
     white-space: nowrap;
   }
 
@@ -71,7 +71,7 @@ const zvyraznene = osetreni.zvyraznit === true;
   .karta--zvyraznena .karta__skupina,
   .karta--zvyraznena .karta__popis { color: var(--on-dark); }
   .karta--zvyraznena .karta__udaje { border-top-color: var(--rule-dark); }
-  .karta--zvyraznena .udaj__delka { color: rgba(232, 231, 223, .6); }
+  .karta--zvyraznena .udaj__delka { color: var(--on-dark-slaby); }
   .karta--zvyraznena .udaj__cena { color: var(--honey-soft); }
 
   /* Skryto filtrem */

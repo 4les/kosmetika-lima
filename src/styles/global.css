@@ -4,21 +4,32 @@
    ========================================================================== */
 
 :root {
-  /* Barvy */
-  --linen: #E8E7DF;        /* podklad webu — barva čistého lůžkovinu */
-  --linen-deep: #DBDACF;   /* jemné oddělení, prázdné plochy */
-  --shell: #FBFAF7;        /* karty a světlé sekce */
-  --pine: #17302C;         /* text a tmavé bloky */
-  --pine-dark: #0F211E;    /* patička */
-  --petrol: #2B5A54;       /* doplňková tmavá */
-  --honey: #C0762A;        /* AKCENT — jen ceny a tlačítka objednání */
-  --honey-dark: #A96421;
-  --honey-soft: #E4C79A;   /* akcent na tmavém pozadí */
-  --muted: #5F6B66;        /* vedlejší text */
-  --rule: rgba(23, 48, 44, .16);
-  --rule-soft: rgba(23, 48, 44, .09);
-  --on-dark: rgba(232, 231, 223, .78);
-  --rule-dark: rgba(232, 231, 223, .18);
+  /* --- Barvy ---------------------------------------------------------------
+     Zlatá je ve třech odstínech podle použití. Není to zbytečnost:
+     původní #C6A15B má na světlém pozadí kontrast jen 2,23:1, takže by v ní
+     nebyly čitelné ceny. Proto se text píše tmavší variantou.
+  */
+  --linen: #F8F5EF;        /* pozadí webu */
+  --linen-deep: #DCE4DC;   /* světlá šalvějová — střídavé sekce, prázdné plochy */
+  --shell: #FFFFFF;        /* karty */
+  --pine: #53665A;         /* šalvějová — tmavé bloky, bílý text 6,15:1 */
+  --pine-dark: #3E4D45;    /* patička, o něco hlubší */
+  --petrol: #43524A;       /* doplňková tmavá, zvýraznění v nadpisu */
+  --honey: #C6A15B;        /* zlatá — VÝPLNĚ tlačítek a linky, nikdy text */
+  --honey-dark: #B08D4A;   /* zlatá při najetí myší */
+  --honey-text: #8B6828;   /* zlatá pro TEXT na světlém pozadí, 4,70:1 */
+  --honey-soft: #EBD8B5;   /* zlatá pro text na tmavém pozadí, 4,40:1 */
+  --ink-on-gold: #303330;  /* text na zlatém tlačítku, 5,27:1 */
+  --muted: #63695F;        /* vedlejší text, 5,19:1 */
+  --rule: rgba(48, 51, 48, .16);
+  --rule-soft: rgba(48, 51, 48, .09);
+  --on-dark: rgba(248, 245, 239, .80);
+  --rule-dark: rgba(248, 245, 239, .20);
+  --on-dark-slaby: rgba(248, 245, 239, .55);
+  --vrstva-dark: rgba(248, 245, 239, .08);
+  --stin: rgba(48, 51, 48, .12);
+  --stin-vyrazny: rgba(48, 51, 48, .16);
+  --hlavicka-pozadi: rgba(248, 245, 239, .90);
 
   /* Písma */
   --display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -44,7 +55,7 @@ html {
 body {
   margin: 0;
   background: var(--linen);
-  color: var(--pine);
+  color: #303330;
   font-family: var(--body);
   font-size: 17px;
   line-height: 1.65;
@@ -93,7 +104,7 @@ p { margin: 0 0 1em; }
   font-size: .68rem;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--honey);
+  color: var(--honey-text);
   margin: 0 0 18px;
   display: flex;
   align-items: center;
@@ -146,9 +157,9 @@ p { margin: 0 0 1em; }
   cursor: pointer;
   transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
-.btn--primary { background: var(--honey); color: #fff; }
+.btn--primary { background: var(--honey); color: var(--ink-on-gold); }
 .btn--primary:hover { background: var(--honey-dark); transform: translateY(-2px); }
-.btn--ghost { border-color: var(--rule); background: transparent; color: var(--pine); }
+.btn--ghost { border-color: var(--rule); background: transparent; color: #303330; }
 .btn--ghost:hover { border-color: var(--pine); transform: translateY(-2px); }
 .band--pine .btn--ghost { border-color: var(--rule-dark); color: var(--linen); }
 .band--pine .btn--ghost:hover { border-color: var(--linen); }
