@@ -1,0 +1,155 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+import PrehledOsetreni from '../components/PrehledOsetreni.astro';
+import kontakt from '../data/kontakt.json';
+import faq from '../data/faq.json';
+
+const kroky = [
+  {
+    nazev: 'Konzultace a příprava pleti',
+    text: 'Krátce si projdeme, co pleť dělá a co od ošetření čekáte. Následuje šetrné odlíčení a příprava.',
+  },
+  {
+    nazev: 'Vlastní ošetření',
+    text: 'Postup i intenzitu volím podle toho, jak pleť reaguje. U přístrojových ošetření kombinuji metody podle cíle.',
+  },
+  {
+    nazev: 'Zklidnění a ochrana',
+    text: 'Maska nebo sérum a závěrečná péče. Na konec doporučím, jak v péči pokračovat doma.',
+  },
+];
+---
+
+<Zaklad
+  titulek="Ošetření a ceník"
+  popis="Přehled všech ošetření včetně cen a délky — kosmetické a přístrojové ošetření pleti, madero terapie, obočí, depilace a IPL. Vyfiltrujte si podle toho, co řešíte."
+>
+  <section class="band band--tight uvod">
+    <div class="wrap">
+      <p class="eyebrow">Ošetření a ceník</p>
+      <h1>Vyberte podle toho,<br />co řešíte.</h1>
+      <p class="lede" style="margin-top:22px">
+        Každé ošetření má u sebe délku i cenu. Nemusíte nic přepočítávat ani hledat
+        v jiné tabulce. Když si nebudete jistí, zavolejte — vybereme spolu.
+      </p>
+    </div>
+  </section>
+
+  <section class="band band--shell band--tight">
+    <div class="wrap">
+      <PrehledOsetreni />
+    </div>
+  </section>
+
+  <!-- JAK TO PROBÍHÁ -->
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Průběh návštěvy</p>
+      <h2>Jak ošetření probíhá</h2>
+      <ol class="kroky">
+        {kroky.map((k, i) => (
+          <li class="rv">
+            <span class="kroky__cislo">{i + 1}</span>
+            <h3>{k.nazev}</h3>
+            <p>{k.text}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="poznamka">
+        Doporučení: u většiny ošetření přinese výraznější efekt série 3–6 návštěv.
+        U maderoterapie těla doporučuji minimálně pět procedur.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band band--shell band--tight">
+    <div class="wrap">
+      <p class="eyebrow">Časté dotazy</p>
+      <h2>Než přijdete poprvé</h2>
+      <div class="faq">
+        {faq.map((polozka, i) => (
+          <details open={i === 0}>
+            <summary>{polozka.otazka}</summary>
+            <p>{polozka.odpoved}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--pine band--tight">
+    <div class="wrap vyzva">
+      <div>
+        <h2>Nevíte, co si vybrat?</h2>
+        <p class="lede" style="margin-top:14px">Zavolejte a probereme to. Poradím i po telefonu.</p>
+      </div>
+      <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
+        Zavolat <span class="btn__num">{kontakt.telefon}</span>
+      </a>
+    </div>
+  </section>
+</Zaklad>
+
+<style>
+  .uvod { padding-bottom: 0; }
+
+  .kroky {
+    list-style: none;
+    padding: 0;
+    margin: 34px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+  }
+  .kroky li { border-top: 1px solid var(--rule); padding-top: 20px; }
+  .kroky__cislo {
+    font-family: var(--mono);
+    font-size: .8rem;
+    color: var(--honey);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .kroky h3 { margin-bottom: 8px; }
+  .kroky p { font-size: .92rem; color: var(--muted); margin: 0; }
+
+  .poznamka {
+    margin-top: 34px;
+    padding-left: 16px;
+    border-left: 2px solid var(--honey);
+    font-size: .9rem;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  .faq { max-width: 760px; margin-top: 28px; }
+  .faq details { border-bottom: 1px solid var(--rule-soft); padding: 6px 0; }
+  .faq summary {
+    cursor: pointer;
+    padding: 18px 0;
+    font-size: 1.05rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+";
+    font-family: var(--mono);
+    color: var(--honey);
+    font-size: 1.3rem;
+    transition: transform .2s ease;
+  }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq p { padding: 0 0 20px; color: var(--muted); font-size: .95rem; max-width: 62ch; margin: 0; }
+
+  .vyzva {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>

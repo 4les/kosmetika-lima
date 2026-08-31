@@ -1,0 +1,38 @@
+{
+  "_navod": "Kontaktní údaje na jednom místě. Používají se v hlavičce, patičce, na stránce Kontakt i ve strukturovaných datech pro Google. Položky označené DOPLNIT je nutné vyplnit před spuštěním webu.",
+
+  "nazev": "Kosmetika Lima",
+  "provozovatel": "Stanislava Stalzerová",
+  "ico": "DOPLNIT",
+  "platceDph": false,
+
+  "telefon": "+420 734 334 177",
+  "telefonLink": "+420734334177",
+  "email": "DOPLNIT@kosmetika-lima.cz",
+
+  "adresa": {
+    "ulice": "Pode Zdí 153/21",
+    "psc": "748 01",
+    "mesto": "Hlučín",
+    "zeme": "CZ",
+    "lat": 49.8975,
+    "lng": 18.1917
+  },
+
+  "mapaEmbed": "https://www.google.com/maps?q=Pode+Zd%C3%AD+153/21+Hlu%C4%8D%C3%ADn&z=17&output=embed",
+  "mapaOdkaz": "https://www.google.com/maps/search/?api=1&query=Pode+Zd%C3%AD+153%2F21+Hlu%C4%8D%C3%ADn",
+
+  "oteviraciDoba": [
+    { "dny": "Pondělí – pátek", "hodiny": "8:00 – 18:00 dle objednávek" },
+    { "dny": "Sobota", "hodiny": "po domluvě" },
+    { "dny": "Neděle", "hodiny": "zavřeno" }
+  ],
+  "oteviraciPoznamka": "Termíny domlouvám individuálně. Když nezvednu, jsem u klientky — ozvu se zpět.",
+
+  "site": {
+    "instagram": "",
+    "facebook": ""
+  },
+
+  "znacky": ["Merllin", "Palatine", "Sparidonn", "Derma Pen", "IPL"]
+}

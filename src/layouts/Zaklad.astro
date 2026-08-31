@@ -1,0 +1,101 @@
+---
+import Hlavicka from '../components/Hlavicka.astro';
+import Paticka from '../components/Paticka.astro';
+import kontakt from '../data/kontakt.json';
+import { odkaz, jeNahled, ostraCesta } from '../lib/odkaz';
+import '../styles/global.css';
+
+const { titulek, popis, obrazek = '/img/og.jpg' } = Astro.props;
+
+// Kanonický odkaz vždy míří na ostrou doménu, i při prohlížení náhledu.
+const kanonicka = new URL(ostraCesta(Astro.url.pathname), Astro.site).href;
+const plnyTitulek = `${titulek} | ${kontakt.nazev} — ${kontakt.adresa.mesto}`;
+
+// Strukturovaná data pro Google. Díky nim se salon správně zobrazuje
+// ve vyhledávání a na mapách jako místní podnik.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BeautySalon',
+  name: kontakt.nazev,
+  founder: kontakt.provozovatel,
+  telephone: kontakt.telefon,
+  url: Astro.site?.href,
+  image: new URL(obrazek, Astro.site).href,
+  priceRange: '70–7500 Kč',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: kontakt.adresa.ulice,
+    postalCode: kontakt.adresa.psc,
+    addressLocality: kontakt.adresa.mesto,
+    addressCountry: kontakt.adresa.zeme,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: kontakt.adresa.lat,
+    longitude: kontakt.adresa.lng,
+  },
+};
+---
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{plnyTitulek}</title>
+  <meta name="description" content={popis} />
+  <link rel="canonical" href={kanonicka} />
+  {/* Náhledová verze v podsložce se nesmí dostat do vyhledávačů */}
+  {jeNahled && <meta name="robots" content="noindex, nofollow" />}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="cs_CZ" />
+  <meta property="og:site_name" content={kontakt.nazev} />
+  <meta property="og:title" content={plnyTitulek} />
+  <meta property="og:description" content={popis} />
+  <meta property="og:url" content={kanonicka} />
+  <meta property="og:image" content={new URL(obrazek, Astro.site).href} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="theme-color" content="#17302C" />
+  <link rel="icon" href={odkaz('/favicon.svg')} type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</head>
+
+<body>
+  <a class="preskocit" href="#obsah">Přeskočit na obsah</a>
+  <Hlavicka />
+  <main id="obsah">
+    <slot />
+  </main>
+  <Paticka />
+
+  <script>
+    // Postupné odhalování prvků při scrollování
+    const prvky = document.querySelectorAll('.rv');
+    if (prvky.length) {
+      const io = new IntersectionObserver(
+        (zaznamy) => {
+          zaznamy.forEach((z) => {
+            if (z.isIntersecting) {
+              z.target.classList.add('in');
+              io.unobserve(z.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      prvky.forEach((el) => io.observe(el));
+    }
+  </script>
+</body>
+</html>

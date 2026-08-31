@@ -1,0 +1,268 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+import KartaOsetreni from '../components/KartaOsetreni.astro';
+import data from '../data/osetreni.json';
+import kontakt from '../data/kontakt.json';
+import { odkaz } from '../lib/odkaz';
+
+// Na úvodní stránce ukazuji jen tři ošetření jako ochutnávku.
+// Změna výběru = přepsat tato id (musí existovat v osetreni.json).
+const vyber = ['cistici-osetreni', 'madero-plet-komplet', 'balicek-pristrojovy'];
+const ukazka = vyber
+  .map((id) => data.osetreni.find((o) => o.id === id))
+  .filter(Boolean);
+---
+
+<Zaklad
+  titulek="Kosmetika a péče o pleť"
+  popis="Kosmetické a přístrojové ošetření pleti, madero terapie, obočí a depilace v Hlučíně. Individuální péče bez spěchu, objednávky na telefonu."
+>
+  <!-- ÚVOD -->
+  <section class="hero">
+    <div class="wrap hero__mrizka">
+      <div>
+        <p class="eyebrow">Kosmetický salon · {kontakt.adresa.mesto}</p>
+        <h1>Péče o pleť,<br />kterou <em>skládám</em><br />podle Vaší pleti.</h1>
+        <p class="lede hero__text">
+          Kosmetické a přístrojové ošetření, madero terapie, obočí a depilace.
+          Jedna klientka, jeden termín, žádný spěch.
+        </p>
+        <div class="tlacitka">
+          <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
+            Objednat se <span class="btn__num">{kontakt.telefon.replace('+420 ', '')}</span>
+          </a>
+          <a class="btn btn--ghost" href={odkaz('/osetreni/')}>Vybrat ošetření</a>
+        </div>
+
+        <dl class="fakta">
+          <div><dt>1 : 1</dt><dd>bez čekárny</dd></div>
+          <div><dt>{kontakt.adresa.ulice}</dt><dd>{kontakt.adresa.mesto}</dd></div>
+          <div><dt>Dle objednávek</dt><dd>termín po telefonu</dd></div>
+        </dl>
+      </div>
+
+      <figure class="portret">
+        <img
+          src={odkaz('/img/stanislava.jpg')}
+          alt={`${kontakt.provozovatel}, kosmetička`}
+          width="640" height="800"
+        />
+        <figcaption>
+          <b>{kontakt.provozovatel}</b>
+          <span>ošetření vedu osobně</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CO ŘEŠÍTE -->
+  <section class="band band--shell">
+    <div class="wrap">
+      <p class="eyebrow">Kde začít</p>
+      <h2>Řekněte mi, co řešíte.</h2>
+      <p class="lede" style="margin-top:18px">
+        Nemusíte znát názvy přístrojů. Vyberte, co Vás trápí, a uvidíte jen ta
+        ošetření, která to řeší — včetně délky a ceny.
+      </p>
+
+      <div class="rozcestnik">
+        {data.kategorie.map((k) => (
+          <a href={odkaz(`/osetreni/?resim=${k.id}`)}>{k.nazev}</a>
+        ))}
+      </div>
+
+      <div class="ukazka">
+        {ukazka.map((o) => <KartaOsetreni osetreni={o} />)}
+      </div>
+
+      <div class="tlacitka">
+        <a class="btn btn--ghost" href={odkaz('/osetreni/')}>Všechna ošetření a ceny</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MADERO -->
+  <section class="band band--pine">
+    <div class="wrap dvojice">
+      <div>
+        <p class="eyebrow">Madero terapie</p>
+        <h2>Dřevo místo přístroje.</h2>
+        <p class="lede" style="margin-top:18px">
+          Masážní technika se soustavou tvarovaných dřevěných nástrojů. Na obličeji
+          rozhýbe lymfu a zpevní ovál, na těle rozbíjí uzlíky celulitidy a uvolní
+          přetížené svaly.
+        </p>
+        <ul class="prinosy">
+          <li>Podpora lymfy a odvod toxinů</li>
+          <li>Redukce otoků a kruhů pod očima</li>
+          <li>Zpevnění a tvarování postavy</li>
+          <li>Úleva od svalového napětí</li>
+        </ul>
+        <div class="tlacitka">
+          <a class="btn btn--ghost" href={odkaz('/madero-terapie/')}>Jak to probíhá</a>
+        </div>
+      </div>
+      <img class="foto" src={odkaz('/img/madero.jpg')} alt="Dřevěné nástroje pro madero terapii" width="800" height="1000" />
+    </div>
+  </section>
+
+  <!-- O MNĚ -->
+  <section class="band">
+    <div class="wrap dvojice dvojice--obraceno">
+      <img class="foto" src={odkaz('/img/salon.jpg')} alt="Prostředí salonu" width="800" height="1000" />
+      <div>
+        <p class="eyebrow">O mně</p>
+        <h2>Salon vedu sama.<br />To je celý koncept.</h2>
+        <p class="lede" style="margin-top:20px">
+          Ke každé klientce přistupuji individuálně — ošetření skládám podle toho,
+          co pleť zrovna potřebuje, ne podle ceníkové položky. Ráda poradím i s
+          domácí péčí.
+        </p>
+        <div class="znacky">
+          {kontakt.znacky.map((z) => <span>{z}</span>)}
+        </div>
+        <div class="tlacitka">
+          <a class="btn btn--ghost" href={odkaz('/o-mne/')}>Víc o mně</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÝZVA -->
+  <section class="band band--pine band--tight">
+    <div class="wrap vyzva">
+      <div>
+        <h2>Domluvíme termín?</h2>
+        <p class="lede" style="margin-top:14px">
+          {kontakt.oteviraciPoznamka}
+        </p>
+      </div>
+      <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
+        Zavolat <span class="btn__num">{kontakt.telefon}</span>
+      </a>
+    </div>
+  </section>
+</Zaklad>
+
+<style>
+  .hero { padding: clamp(44px, 7vw, 84px) 0 clamp(52px, 7vw, 88px); }
+  .hero__mrizka {
+    display: grid;
+    grid-template-columns: 1.08fr .92fr;
+    gap: clamp(32px, 5vw, 68px);
+    align-items: end;
+  }
+  .hero h1 em { font-style: italic; color: var(--petrol); }
+  .hero__text { margin-top: 26px; max-width: 44ch; }
+
+  .fakta {
+    margin: 36px 0 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .fakta div { display: flex; flex-direction: column; gap: 4px; }
+  .fakta dt { font-family: var(--mono); font-size: .95rem; font-weight: 500; }
+  .fakta dd { margin: 0; font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
+
+  .portret { position: relative; margin: 0; }
+  .portret img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 22%;
+    border-radius: 220px 220px var(--radius) var(--radius);
+    background: var(--linen-deep);
+  }
+  .portret figcaption {
+    position: absolute;
+    left: -14px;
+    bottom: 26px;
+    background: var(--shell);
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 12px 34px rgba(23, 48, 44, .14);
+    border-left: 3px solid var(--honey);
+  }
+  .portret figcaption b { display: block; font-family: var(--display); font-size: 1.1rem; font-weight: 500; }
+  .portret figcaption span { font-size: .78rem; color: var(--muted); }
+
+  .rozcestnik { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .rozcestnik a {
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: .9rem;
+    text-decoration: none;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .rozcestnik a:hover { background: var(--pine); color: var(--linen); border-color: var(--pine); }
+
+  .ukazka {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 34px;
+  }
+
+  .dvojice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(30px, 5vw, 72px);
+    align-items: center;
+  }
+  .foto {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--linen-deep);
+  }
+
+  .prinosy { list-style: none; padding: 0; margin: 26px 0 0; }
+  .prinosy li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule-dark);
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    font-size: .95rem;
+  }
+  .prinosy li::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--honey);
+    flex-shrink: 0;
+  }
+
+  .znacky { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .znacky span {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 8px 16px;
+    color: var(--muted);
+  }
+
+  .vyzva {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .hero__mrizka, .dvojice { grid-template-columns: 1fr; }
+    .portret { order: -1; max-width: 380px; }
+    .portret img { border-radius: 180px 180px var(--radius) var(--radius); }
+    .dvojice--obraceno .foto { order: 2; }
+    .foto { max-width: 400px; }
+  }
+</style>

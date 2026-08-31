@@ -1,0 +1,111 @@
+---
+import KartaOsetreni from './KartaOsetreni.astro';
+import data from '../data/osetreni.json';
+
+const { kategorie, osetreni } = data;
+const pocet = osetreni.length;
+---
+
+<div class="prehled">
+  <div class="filtr" role="group" aria-label="Filtr ošetření podle problému">
+    <button class="stitek" data-filtr="vse" aria-pressed="true">Vše</button>
+    {kategorie.map((k) => (
+      <button class="stitek" data-filtr={k.id} aria-pressed="false">{k.nazev}</button>
+    ))}
+  </div>
+
+  <div class="karty" id="karty">
+    {osetreni.map((o) => <KartaOsetreni osetreni={o} />)}
+  </div>
+
+  <p class="pocet" id="pocet" aria-live="polite" data-celkem={pocet}>
+    Zobrazuji všech {pocet} ošetření.
+  </p>
+
+  <p class="prazdno" id="prazdno" hidden>
+    Tuhle kategorii zatím nenabízím. Zavolejte mi a najdeme jinou cestu.
+  </p>
+</div>
+
+<style>
+  .filtr { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+
+  .stitek {
+    border: 1px solid var(--rule);
+    background: transparent;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .stitek:hover { border-color: var(--petrol); }
+  .stitek[aria-pressed="true"] {
+    background: var(--pine);
+    color: var(--linen);
+    border-color: var(--pine);
+  }
+
+  .karty {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .pocet, .prazdno {
+    margin-top: 26px;
+    font-size: .85rem;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+  .prazdno[hidden] { display: none; }
+</style>
+
+<script>
+  const stitky = document.querySelectorAll<HTMLButtonElement>('.stitek');
+  const karty = Array.from(document.querySelectorAll<HTMLElement>('#karty .karta'));
+  const pocet = document.getElementById('pocet');
+  const prazdno = document.getElementById('prazdno');
+
+  function filtruj(id: string, nazev: string) {
+    let videt = 0;
+    karty.forEach((karta) => {
+      const resi = (karta.dataset.resi || '').split(' ');
+      const sedi = id === 'vse' || resi.includes(id);
+      karta.classList.toggle('skryta', !sedi);
+      if (sedi) videt++;
+    });
+
+    if (pocet) {
+      pocet.hidden = videt === 0;
+      // „ošetření" má v češtině stejný tvar pro všechna čísla, plurál se neřeší
+      pocet.textContent =
+        id === 'vse'
+          ? `Zobrazuji všech ${videt} ošetření.`
+          : `${videt} ošetření řeší „${nazev}".`;
+    }
+    if (prazdno) prazdno.hidden = videt !== 0;
+
+    // Zapsat volbu do adresy, aby šel odkaz sdílet a fungovalo tlačítko zpět
+    const url = new URL(window.location.href);
+    if (id === 'vse') url.searchParams.delete('resim');
+    else url.searchParams.set('resim', id);
+    history.replaceState(null, '', url);
+  }
+
+  stitky.forEach((stitek) => {
+    stitek.addEventListener('click', () => {
+      stitky.forEach((s) => s.setAttribute('aria-pressed', 'false'));
+      stitek.setAttribute('aria-pressed', 'true');
+      filtruj(stitek.dataset.filtr || 'vse', stitek.textContent?.trim() || '');
+    });
+  });
+
+  // Přednastavení filtru z adresy — např. /osetreni/?resim=akne
+  const zadano = new URLSearchParams(window.location.search).get('resim');
+  if (zadano) {
+    const stitek = Array.from(stitky).find((s) => s.dataset.filtr === zadano);
+    if (stitek) stitek.click();
+  }
+</script>

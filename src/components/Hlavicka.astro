@@ -1,0 +1,129 @@
+---
+import kontakt from '../data/kontakt.json';
+import { odkaz } from '../lib/odkaz';
+
+const odkazy = [
+  { href: odkaz('/osetreni/'), text: 'Ošetření a ceník' },
+  { href: odkaz('/madero-terapie/'), text: 'Madero terapie' },
+  { href: odkaz('/o-mne/'), text: 'O mně' },
+  { href: odkaz('/kontakt/'), text: 'Kontakt' },
+];
+
+const zde = Astro.url.pathname;
+---
+
+<header class="hlavicka">
+  <div class="wrap hdr">
+    <a class="znacka" href={odkaz('/')}>
+      <span class="znacka__nazev">LIMA</span>
+      <span class="znacka__sub">Kosmetika · {kontakt.adresa.mesto}</span>
+    </a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">
+      Menu
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Hlavní navigace">
+      {odkazy.map((o) => (
+        <a href={o.href} aria-current={zde === o.href ? 'page' : undefined}>{o.text}</a>
+      ))}
+    </nav>
+
+    <a class="btn btn--primary hdr__cta" href={`tel:${kontakt.telefonLink}`}>Objednat se</a>
+  </div>
+</header>
+
+<style>
+  .hlavicka {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: rgba(232, 231, 223, .9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .hdr { display: flex; align-items: center; gap: 28px; height: 76px; }
+
+  .znacka {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .znacka__nazev {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    letter-spacing: .18em;
+    font-weight: 500;
+  }
+  .znacka__sub {
+    font-family: var(--mono);
+    font-size: .56rem;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  .nav { display: flex; gap: 26px; margin-left: auto; }
+  .nav a {
+    text-decoration: none;
+    font-size: .93rem;
+    padding: 6px 0;
+    position: relative;
+  }
+  .nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 100%; bottom: 0;
+    height: 1.5px;
+    background: var(--honey);
+    transition: right .25s ease;
+  }
+  .nav a:hover::after,
+  .nav a[aria-current="page"]::after { right: 0; }
+
+  .hdr__cta { padding: 11px 20px; font-size: .88rem; }
+
+  .burger {
+    display: none;
+    margin-left: auto;
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 9px 16px;
+    cursor: pointer;
+    font-size: .85rem;
+  }
+
+  @media (max-width: 900px) {
+    .nav { display: none; }
+    .nav.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 76px; left: 0; right: 0;
+      background: var(--shell);
+      padding: 24px var(--gut);
+      gap: 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .burger { display: block; }
+    .hdr__cta { display: none; }
+  }
+</style>
+
+<script>
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+  if (burger && nav) {
+    burger.addEventListener('click', () => {
+      const otevreno = nav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(otevreno));
+    });
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).tagName === 'A') nav.classList.remove('open');
+    });
+  }
+</script>

@@ -1,0 +1,26 @@
+[
+  {
+    "otazka": "Jak se objednám?",
+    "odpoved": "Telefonicky na 734 334 177. Otevírací doba je vždy podle objednávek — když nezvednu, jsem u klientky a ozvu se zpět."
+  },
+  {
+    "otazka": "Nevím, které ošetření si vybrat.",
+    "odpoved": "Nemusíte vědět. V přehledu ošetření si vyberte, co řešíte, nebo mi rovnou zavolejte. Před každým ošetřením je krátká konzultace a postup upravím podle aktuálního stavu pleti."
+  },
+  {
+    "otazka": "Musím se na ošetření nějak připravit?",
+    "odpoved": "Ne. Ideální je přijít bez make-upu nebo jen s minimem — odlíčení je součástí ošetření."
+  },
+  {
+    "otazka": "Je přístrojové ošetření vhodné i pro citlivou pleť?",
+    "odpoved": "Ano. Intenzitu a kombinaci metod volím podle toho, jak pleť reaguje. Při přecitlivělosti postup upravím nebo přístrojovou část vynechám."
+  },
+  {
+    "otazka": "Jak často mám chodit?",
+    "odpoved": "Jednorázově pro rozjasnění před událostí, nebo v sérii 3–6 návštěv, pokud chcete viditelnou změnu. U maderoterapie těla doporučuji minimálně pět procedur."
+  },
+  {
+    "otazka": "Můžu ošetření zrušit?",
+    "odpoved": "Ano, stačí dát vědět alespoň den předem. Termín pak nabídnu někomu dalšímu."
+  }
+]

@@ -1,0 +1,101 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+import kontakt from '../data/kontakt.json';
+import { odkaz } from '../lib/odkaz';
+---
+
+<Zaklad
+  titulek="O mně"
+  popis="Stanislava Stalzerová — kosmetička v Hlučíně. Individuální péče o pleť, přírodní kosmetika Merllin a Palatine, laser Sparidonn."
+>
+  <section class="band">
+    <div class="wrap dvojice">
+      <img class="portret" src={odkaz('/img/stanislava.jpg')} alt={kontakt.provozovatel} width="640" height="800" />
+      <div>
+        <p class="eyebrow">O mně</p>
+        <h1>Salon vedu sama.<br />To je celý koncept.</h1>
+        <p class="lede" style="margin-top:22px">
+          Jmenuji se {kontakt.provozovatel} a mým cílem je, abyste se cítila krásně
+          a spokojeně ve své vlastní kůži.
+        </p>
+        <p>
+          Ke každé klientce přistupuji individuálně. Ošetření skládám podle toho, co
+          pleť zrovna potřebuje — ne podle ceníkové položky. Specializuji se na
+          kosmetické ošetření pleti, kosmetické masáže, madero terapii pleti i těla,
+          dermapen, galvanizaci, úpravu a laminaci obočí a řas a depilaci.
+        </p>
+        <p>
+          Ráda poradím s péčí o pleť i s produkty, které Vašemu typu pleti sednou.
+          V salonu je klid — žádná čekárna, žádné překrývající se objednávky.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--shell band--tight">
+    <div class="wrap">
+      <p class="eyebrow">Čím pracuji</p>
+      <h2>Kosmetika a přístroje</h2>
+      <p class="lede" style="margin-top:18px">
+        Používám pouze kvalitní a přírodní produkty značek Merllin a Palatine,
+        které jsou šetrné k pleti. Ve spojení s laserem Sparidonn se jejich účinek
+        ještě znásobuje.
+      </p>
+      <div class="znacky">
+        {kontakt.znacky.map((z) => <span>{z}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--pine band--tight">
+    <div class="wrap vyzva">
+      <div>
+        <h2>Přijďte se podívat.</h2>
+        <p class="lede" style="margin-top:14px">
+          Ať už hledáte profesionální ošetření, nebo jen chvilku pro sebe.
+        </p>
+      </div>
+      <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
+        Zavolat <span class="btn__num">{kontakt.telefon}</span>
+      </a>
+    </div>
+  </section>
+</Zaklad>
+
+<style>
+  .dvojice {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: clamp(30px, 5vw, 68px);
+    align-items: start;
+  }
+  .portret {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--linen-deep);
+  }
+  .znacky { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .znacky span {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 8px 16px;
+    color: var(--muted);
+  }
+  .vyzva {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .dvojice { grid-template-columns: 1fr; }
+    .portret { max-width: 340px; }
+  }
+</style>

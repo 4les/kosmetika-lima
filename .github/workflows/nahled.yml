@@ -1,0 +1,61 @@
+# Náhledová verze webu na GitHub Pages.
+# Slouží ke schvalování, než web pustíme na ostrou doménu.
+# Po přechodu na ostro můžete celý tenhle soubor smazat.
+
+name: Náhled na GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  sestavit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+
+      - name: Připravit Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Nainstalovat závislosti
+        run: npm ci
+
+      - name: Sestavit web do podsložky
+        run: npm run build
+        env:
+          # Web na Pages běží na adrese uzivatel.github.io/nazev-repozitare/,
+          # proto se musí sestavit s tímhle prefixem.
+          BASE_PATH: /${{ github.event.repository.name }}
+
+      - name: Nastavit Pages
+        uses: actions/configure-pages@v5
+
+      - name: Nahrát výsledek
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  nasadit:
+    needs: sestavit
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.nasazeni.outputs.page_url }}
+    steps:
+      - name: Publikovat na GitHub Pages
+        id: nasazeni
+        uses: actions/deploy-pages@v4

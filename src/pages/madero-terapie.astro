@@ -1,0 +1,153 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+import KartaOsetreni from '../components/KartaOsetreni.astro';
+import data from '../data/osetreni.json';
+import kontakt from '../data/kontakt.json';
+import { odkaz } from '../lib/odkaz';
+
+const madero = data.osetreni.filter((o) => o.skupina === 'Madero terapie');
+
+const oblicej = [
+  ['Zlepšení cirkulace', 'Podpora krevního oběhu, přísun kyslíku a živin do pokožky.'],
+  ['Detoxikace', 'Rozhýbání lymfatického systému a odvod toxinů.'],
+  ['Redukce vrásek', 'Stimulace tvorby kolagenu a elastinu.'],
+  ['Zpevnění pleti', 'Zlepšení tonusu a pevnosti, viditelně na oválu obličeje.'],
+  ['Redukce otoků', 'Zmírnění otoků a kruhů pod očima.'],
+  ['Hloubkové čištění pórů', 'Odstranění odumřelých buněk.'],
+];
+
+const telo = [
+  ['Redukce celulitidy', 'Rozbití tukových uzlíků a zlepšení struktury pokožky.'],
+  ['Podpora lymfy', 'Odvod toxinů a snížení zadržované vody.'],
+  ['Zlepšení krevního oběhu', 'Lepší výživa tkání a rychlejší regenerace.'],
+  ['Úleva od bolesti', 'Uvolnění přetížených a ztuhlých svalů.'],
+  ['Zpevnění a tvarování', 'Formování postavy a zlepšení elasticity kůže.'],
+  ['Uvolnění a energie', 'Hluboká relaxace, pocit lehkosti po proceduře.'],
+];
+---
+
+<Zaklad
+  titulek="Madero terapie"
+  popis="Madero terapie obličeje a těla v Hlučíně — masáž tvarovanými dřevěnými nástroji pro podporu lymfy, redukci celulitidy a zpevnění pleti."
+>
+  <section class="band band--pine">
+    <div class="wrap dvojice">
+      <div>
+        <p class="eyebrow">Madero terapie</p>
+        <h1>Dřevo místo přístroje.</h1>
+        <p class="lede" style="margin-top:22px">
+          Masážní technika se soustavou tvarovaných dřevěných nástrojů — válečků,
+          pohárů a desek. Každý tvar má svoje místo a svůj úkol. Žádná elektronika,
+          jen tlak, rytmus a ruce.
+        </p>
+        <div class="tlacitka">
+          <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
+            Objednat se <span class="btn__num">{kontakt.telefon.replace('+420 ', '')}</span>
+          </a>
+        </div>
+      </div>
+      <img class="foto" src={odkaz('/img/madero.jpg')} alt="Dřevěné nástroje pro madero terapii" width="800" height="1000" />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Obličej, krk a dekolt</p>
+      <h2>Madero terapie obličeje</h2>
+      <p class="lede" style="margin-top:18px">
+        Jemnější varianta zaměřená na oblast obličeje, krku a dekoltu. Nejvíc je
+        vidět na otocích a na oválu obličeje.
+      </p>
+      <ul class="ucinky">
+        {oblicej.map(([nazev, text]) => (
+          <li class="rv"><b>{nazev}</b><span>{text}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band--shell">
+    <div class="wrap">
+      <p class="eyebrow">Celé tělo</p>
+      <h2>Madero terapie těla</h2>
+      <p class="lede" style="margin-top:18px">
+        Intenzivnější práce zaměřená na celulitidu, zadržovanou vodu a svalové
+        napětí. Nejlepší výsledky přináší v sérii.
+      </p>
+      <ul class="ucinky">
+        {telo.map(([nazev, text]) => (
+          <li class="rv"><b>{nazev}</b><span>{text}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Ceny a délka</p>
+      <h2>Varianty procedur</h2>
+      <div class="karty">
+        {madero.map((o) => <KartaOsetreni osetreni={o} />)}
+      </div>
+      <p class="poznamka">
+        Série vychází levněji než jednotlivé návštěvy a hlavně má znatelně lepší
+        efekt — u těla doporučuji minimálně pět procedur.
+      </p>
+    </div>
+  </section>
+</Zaklad>
+
+<style>
+  .dvojice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(30px, 5vw, 72px);
+    align-items: center;
+  }
+  .foto {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--linen-deep);
+  }
+
+  .ucinky {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0 40px;
+  }
+  .ucinky li {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ucinky b { font-family: var(--display); font-size: 1.15rem; font-weight: 500; }
+  .ucinky span { font-size: .9rem; color: var(--muted); }
+
+  .karty {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .poznamka {
+    margin-top: 30px;
+    padding-left: 16px;
+    border-left: 2px solid var(--honey);
+    font-size: .9rem;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  @media (max-width: 900px) {
+    .dvojice { grid-template-columns: 1fr; }
+    .foto { max-width: 400px; }
+  }
+</style>

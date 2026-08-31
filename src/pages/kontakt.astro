@@ -1,0 +1,117 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+import kontakt from '../data/kontakt.json';
+---
+
+<Zaklad
+  titulek="Kontakt"
+  popis={`Kosmetika Lima, ${kontakt.adresa.ulice}, ${kontakt.adresa.mesto}. Objednávky na telefonu ${kontakt.telefon}. Termíny domlouvám individuálně.`}
+>
+  <section class="band band--pine">
+    <div class="wrap dvojice">
+      <div>
+        <p class="eyebrow">Kontakt</p>
+        <h1>{kontakt.adresa.ulice}<br />{kontakt.adresa.mesto}</h1>
+
+        <dl class="radky">
+          <div>
+            <dt>Telefon</dt>
+            <dd><a href={`tel:${kontakt.telefonLink}`}>{kontakt.telefon}</a></dd>
+          </div>
+          <div>
+            <dt>E-mail</dt>
+            <dd><a href={`mailto:${kontakt.email}`}>{kontakt.email}</a></dd>
+          </div>
+          <div>
+            <dt>Adresa</dt>
+            <dd>{kontakt.adresa.ulice}<br />{kontakt.adresa.psc} {kontakt.adresa.mesto}</dd>
+          </div>
+          <div>
+            <dt>Otevřeno</dt>
+            <dd>
+              {kontakt.oteviraciDoba.map((d) => (
+                <span class="den"><b>{d.dny}</b>{d.hodiny}</span>
+              ))}
+            </dd>
+          </div>
+          <div>
+            <dt>Parkování</dt>
+            <dd>Zdarma přímo před salonem</dd>
+          </div>
+        </dl>
+
+        <p class="poznamka">{kontakt.oteviraciPoznamka}</p>
+
+        <div class="tlacitka">
+          <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
+            Zavolat <span class="btn__num">{kontakt.telefon.replace('+420 ', '')}</span>
+          </a>
+          <a class="btn btn--ghost" href={kontakt.mapaOdkaz} rel="noopener">Navigovat</a>
+        </div>
+      </div>
+
+      <iframe
+        class="mapa"
+        src={kontakt.mapaEmbed}
+        title={`Mapa — ${kontakt.nazev}, ${kontakt.adresa.ulice}`}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+</Zaklad>
+
+<style>
+  .dvojice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(30px, 5vw, 64px);
+  }
+
+  .radky { margin: 34px 0 0; border-top: 1px solid var(--rule-dark); }
+  .radky > div {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule-dark);
+  }
+  .radky dt {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(232, 231, 223, .55);
+    padding-top: 4px;
+  }
+  .radky dd { margin: 0; font-size: 1.02rem; }
+  .radky dd a { text-decoration: none; border-bottom: 1px solid var(--honey); padding-bottom: 2px; }
+  .den { display: block; }
+  .den b { font-weight: 500; display: inline-block; min-width: 150px; }
+
+  .poznamka {
+    margin-top: 26px;
+    background: rgba(232, 231, 223, .07);
+    border-left: 2px solid var(--honey);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    font-size: .92rem;
+    color: var(--on-dark);
+  }
+
+  .mapa {
+    width: 100%;
+    min-height: 420px;
+    height: 100%;
+    border: 1px solid var(--rule-dark);
+    border-radius: var(--radius);
+    filter: grayscale(.35) contrast(1.05);
+  }
+
+  @media (max-width: 900px) {
+    .dvojice { grid-template-columns: 1fr; }
+    .radky > div { grid-template-columns: 1fr; gap: 4px; }
+    .den b { min-width: 0; margin-right: 8px; }
+    .mapa { min-height: 320px; }
+  }
+</style>

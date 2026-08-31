@@ -1,0 +1,81 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+import kontakt from '../data/kontakt.json';
+---
+
+<Zaklad
+  titulek="Ochrana osobních údajů"
+  popis="Jak nakládám s osobními údaji klientek a návštěvníků webu."
+>
+  <section class="band">
+    <div class="wrap text">
+      <p class="eyebrow">Právní informace</p>
+      <h1>Ochrana osobních údajů</h1>
+
+      <p class="upozorneni">
+        <b>Šablona k doplnění.</b> Text níže je funkční základ, ale před spuštěním
+        webu ho projděte a upravte podle skutečnosti — hlavně jak dlouho uchováváte
+        kartotéku klientek a jestli posíláte SMS připomínky.
+      </p>
+
+      <h2>Kdo údaje zpracovává</h2>
+      <p>
+        {kontakt.provozovatel}, {kontakt.adresa.ulice}, {kontakt.adresa.psc}{' '}
+        {kontakt.adresa.mesto}, IČO {kontakt.ico}.
+        Kontakt: <a href={`tel:${kontakt.telefonLink}`}>{kontakt.telefon}</a>,{' '}
+        <a href={`mailto:${kontakt.email}`}>{kontakt.email}</a>.
+      </p>
+
+      <h2>Jaké údaje a proč</h2>
+      <p>
+        Při objednání termínu zpracovávám jméno a telefonní číslo, abych mohla
+        potvrdit a připomenout návštěvu. Před ošetřením se ptám na zdravotní
+        okolnosti, které mohou mít vliv na volbu postupu — tyto informace používám
+        výhradně k bezpečnému provedení ošetření a nikomu je nepředávám.
+      </p>
+
+      <h2>Jak dlouho je uchovávám</h2>
+      <p>
+        Kontaktní údaje uchovávám po dobu, kdy ke mně docházíte, a poté nejdéle
+        [DOPLNIT] let. Daňové doklady uchovávám po dobu stanovenou zákonem.
+      </p>
+
+      <h2>Komu je předávám</h2>
+      <p>
+        Nikomu, s výjimkou účetní a orgánů, kterým to ukládá zákon.
+        Údaje neprodávám a nepoužívám k reklamnímu cílení.
+      </p>
+
+      <h2>Tento web</h2>
+      <p>
+        Web neběží na žádném redakčním systému, nesbírá registrace ani nepoužívá
+        sledovací soubory cookie. Stránka Kontakt obsahuje vloženou mapu Google —
+        jejím zobrazením se Vaše IP adresa dostane ke společnosti Google podle
+        jejích vlastních podmínek.
+      </p>
+
+      <h2>Vaše práva</h2>
+      <p>
+        Máte právo vědět, jaké údaje o Vás vedu, nechat je opravit nebo vymazat.
+        Stačí zavolat nebo napsat. Pokud byste s mým postupem nesouhlasili, můžete
+        se obrátit na Úřad pro ochranu osobních údajů.
+      </p>
+    </div>
+  </section>
+</Zaklad>
+
+<style>
+  .text { max-width: 68ch; }
+  .text h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin: 42px 0 12px; }
+  .text p { color: var(--muted); }
+  .text a { color: var(--pine); text-decoration-color: var(--honey); }
+  .upozorneni {
+    margin: 26px 0 0;
+    padding: 18px 22px;
+    border-left: 2px solid var(--honey);
+    background: var(--shell);
+    border-radius: var(--radius);
+    font-size: .92rem;
+  }
+  .upozorneni b { color: var(--pine); }
+</style>

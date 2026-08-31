@@ -1,0 +1,65 @@
+# =============================================================================
+#  Kosmetika Lima — nastavení Apache pro webhosting WEDOS
+#  Tento soubor se z public/ automaticky kopíruje do dist/ a nahraje na hosting.
+# =============================================================================
+
+# --- HTTPS a jedna kanonická adresa -----------------------------------------
+RewriteEngine On
+
+# Vynutit https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Sjednotit na variantu bez www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# --- Přesměrování starých adres z WordPressu --------------------------------
+# DŮLEŽITÉ: díky tomuhle nepřijdeme o pozice ve vyhledávání.
+# Google má staré adresy zaindexované a musí se dozvědět, kam se přesunuly.
+Redirect 301 /sluzby/ /osetreni/
+Redirect 301 /kosmetika/ /osetreni/
+Redirect 301 /pristrojove-osetreni-pleti/ /osetreni/
+Redirect 301 /cenik/ /osetreni/
+# /madero-terapie/ zůstává na stejné adrese, nepřesměrovává se.
+
+# --- Zablokovat zbytky po WordPressu ----------------------------------------
+# Roboti budou ještě dlouho zkoušet přihlašovací stránky. Nemá smysl je bavit.
+RedirectMatch 410 ^/wp-(admin|login|content|includes|json).*
+RedirectMatch 410 ^/xmlrpc\.php
+
+# --- Vlastní chybová stránka ------------------------------------------------
+ErrorDocument 404 /404.html
+
+# --- Komprese ---------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
+
+# --- Cache ------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML krátce — aby se změna ceny projevila rychle
+  ExpiresByType text/html "access plus 10 minutes"
+  # Ostatní dlouho — Astro dává do názvů souborů hash, takže se nemůže splést
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# --- Bezpečnostní hlavičky --------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# --- Skrýt výpis adresářů ---------------------------------------------------
+Options -Indexes

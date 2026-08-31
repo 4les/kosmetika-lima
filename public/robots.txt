@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kosmetika-lima.cz/sitemap-index.xml

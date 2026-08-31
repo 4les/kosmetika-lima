@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Kosmetika Lima — globální styly
+   Barvy a rozměry se mění jen tady, v :root. Nikde jinde se hex kód nepíše.
+   ========================================================================== */
+
+:root {
+  /* Barvy */
+  --linen: #E8E7DF;        /* podklad webu — barva čistého lůžkovinu */
+  --linen-deep: #DBDACF;   /* jemné oddělení, prázdné plochy */
+  --shell: #FBFAF7;        /* karty a světlé sekce */
+  --pine: #17302C;         /* text a tmavé bloky */
+  --pine-dark: #0F211E;    /* patička */
+  --petrol: #2B5A54;       /* doplňková tmavá */
+  --honey: #C0762A;        /* AKCENT — jen ceny a tlačítka objednání */
+  --honey-dark: #A96421;
+  --honey-soft: #E4C79A;   /* akcent na tmavém pozadí */
+  --muted: #5F6B66;        /* vedlejší text */
+  --rule: rgba(23, 48, 44, .16);
+  --rule-soft: rgba(23, 48, 44, .09);
+  --on-dark: rgba(232, 231, 223, .78);
+  --rule-dark: rgba(232, 231, 223, .18);
+
+  /* Písma */
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Rozměry */
+  --wrap: 1180px;
+  --gut: clamp(20px, 5vw, 56px);
+  --radius: 4px;
+}
+
+/* --------------------------------------------------------- základ ------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background: var(--linen);
+  color: var(--pine);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--honey);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Odkaz pro čtečky a klávesnici — skrytý, dokud na něj nenajedete tabem */
+.preskocit {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--pine);
+  color: var(--linen);
+  padding: 12px 20px;
+  z-index: 200;
+  text-decoration: none;
+}
+.preskocit:focus { left: 8px; top: 8px; }
+
+/* ------------------------------------------------------- typografie ----- */
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.08;
+  font-variation-settings: "SOFT" 12, "WONK" 1;
+}
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -.02em; }
+h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); letter-spacing: -.015em; }
+h3 { font-size: clamp(1.2rem, 2.2vw, 1.5rem); }
+p { margin: 0 0 1em; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--honey);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule-soft);
+  max-width: 110px;
+}
+
+.lede {
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+/* ------------------------------------------------------------ layout --- */
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding-left: var(--gut);
+  padding-right: var(--gut);
+}
+
+.band { padding: clamp(60px, 9vw, 112px) 0; }
+.band--tight { padding: clamp(44px, 6vw, 72px) 0; }
+.band--shell { background: var(--shell); }
+
+.band--pine { background: var(--pine); color: var(--linen); }
+.band--pine .eyebrow { color: var(--honey-soft); }
+.band--pine .eyebrow::after { background: var(--rule-dark); }
+.band--pine .lede { color: var(--on-dark); }
+
+/* ----------------------------------------------------------- tlačítka -- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: .95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.btn--primary { background: var(--honey); color: #fff; }
+.btn--primary:hover { background: var(--honey-dark); transform: translateY(-2px); }
+.btn--ghost { border-color: var(--rule); background: transparent; color: var(--pine); }
+.btn--ghost:hover { border-color: var(--pine); transform: translateY(-2px); }
+.band--pine .btn--ghost { border-color: var(--rule-dark); color: var(--linen); }
+.band--pine .btn--ghost:hover { border-color: var(--linen); }
+.btn__num { font-family: var(--mono); font-size: .9rem; }
+
+.tlacitka { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+/* --------------------------------------------------- animace odhalení -- */
+
+.rv {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.rv.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .rv { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
