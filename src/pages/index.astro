@@ -83,7 +83,7 @@ const ukazka = vyber
 
   <!-- MADERO -->
   <section class="band band--pine">
-    <div class="wrap dvojice">
+    <div class="wrap dvojice dvojice--nastroje">
       <div>
         <p class="eyebrow">Madero terapie</p>
         <h2>Dřevo místo přístroje.</h2>
@@ -103,7 +103,7 @@ const ukazka = vyber
         </div>
       </div>
       <img class="foto-nastroje" src={odkaz('/img/nastroje.webp')}
-           alt="Sada dřevěných nástrojů pro madero terapii" width="880" height="1100" />
+           alt="Sada dřevěných nástrojů pro madero terapii" width="1200" height="958" />
     </div>
   </section>
 
@@ -147,9 +147,11 @@ const ukazka = vyber
 
 <style>
   /* Fotka nástrojů má tmavé pozadí, proto smí i do barevného pásu.
-     Ateliérové snímky na bílém pozadí sem stále nepatří. */
+     Je na šířku, takže dostává širší sloupec — jinak by se sada
+     musela ořezávat a půlka nástrojů by zmizela. */
   .foto-nastroje {
-    width: min(100%, 420px);
+    width: 100%;
+    max-width: 620px;
     height: auto;
     justify-self: end;
     border-radius: var(--radius);
@@ -228,6 +230,8 @@ const ukazka = vyber
     gap: clamp(30px, 5vw, 72px);
     align-items: center;
   }
+  /* Musí být až za .dvojice — stejná specificita, rozhoduje pořadí. */
+  .dvojice--nastroje { grid-template-columns: 1fr 1.25fr; }
   .foto {
     width: min(100%, 440px);
     height: auto;
@@ -273,7 +277,8 @@ const ukazka = vyber
   }
 
   @media (max-width: 900px) {
-    .hero__mrizka, .dvojice { grid-template-columns: 1fr; }
+    .hero__mrizka, .dvojice, .dvojice--nastroje { grid-template-columns: 1fr; }
+    .foto-nastroje { max-width: 100%; justify-self: start; }
     .portret { order: -1; width: min(100%, 300px); justify-self: center; }
 
     .dvojice--obraceno .foto { order: 2; }
