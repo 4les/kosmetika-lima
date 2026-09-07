@@ -14,9 +14,8 @@ const zde = Astro.url.pathname;
 
 <header class="hlavicka">
   <div class="wrap hdr">
-    <a class="znacka" href={odkaz('/')}>
-      <span class="znacka__nazev">LIMA</span>
-      <span class="znacka__sub">Kosmetika · {kontakt.adresa.mesto}</span>
+    <a class="znacka" href={odkaz('/')} aria-label={`${kontakt.nazev} — úvodní stránka`}>
+      <img src={odkaz('/img/logo.png')} alt={kontakt.nazev} width="290" height="171" />
     </a>
 
     <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">
@@ -44,26 +43,11 @@ const zde = Astro.url.pathname;
   }
   .hdr { display: flex; align-items: center; gap: 28px; height: 76px; }
 
-  .znacka {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  .znacka__nazev {
-    font-family: var(--display);
-    font-size: 1.6rem;
-    letter-spacing: .18em;
-    font-weight: 500;
-  }
-  .znacka__sub {
-    font-family: var(--mono);
-    font-size: .56rem;
-    letter-spacing: .34em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 5px;
+  .znacka { display: block; flex-shrink: 0; line-height: 0; }
+  .znacka img { width: auto; height: 52px; }
+
+  @media (max-width: 480px) {
+    .znacka img { height: 42px; }
   }
 
   .nav { display: flex; gap: 26px; margin-left: auto; }

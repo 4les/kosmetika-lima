@@ -102,14 +102,8 @@ const ukazka = vyber
           <a class="btn btn--ghost" href={odkaz('/madero-terapie/')}>Jak to probíhá</a>
         </div>
       </div>
-      <ul class="nastroje" aria-label="Dřevěné nástroje používané při madero terapii">
-        <li>Váleček</li>
-        <li>Kostka</li>
-        <li>Pohár</li>
-        <li>Hřib</li>
-        <li>Deska</li>
-        <li>Lano</li>
-      </ul>
+      <img class="foto-nastroje" src={odkaz('/img/nastroje.webp')}
+           alt="Sada dřevěných nástrojů pro madero terapii" width="880" height="1100" />
     </div>
   </section>
 
@@ -152,6 +146,14 @@ const ukazka = vyber
 </Zaklad>
 
 <style>
+  /* Fotka nástrojů má tmavé pozadí, proto smí i do barevného pásu.
+     Ateliérové snímky na bílém pozadí sem stále nepatří. */
+  .foto-nastroje {
+    width: min(100%, 420px);
+    height: auto;
+    justify-self: end;
+    border-radius: var(--radius);
+  }
   .hero { padding: clamp(44px, 7vw, 84px) 0 clamp(52px, 7vw, 88px); }
   .hero__mrizka {
     display: grid;
@@ -231,32 +233,6 @@ const ukazka = vyber
     height: auto;
     border-radius: var(--radius);
     background: var(--linen-deep);
-  }
-
-  /* Názvy nástrojů v tmavém pásu. Fotka sem nepatří — ateliérový snímek
-     na bílém pozadí by v barevném pásu působil jako proražená díra. */
-  .nastroje {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-  .nastroje li {
-    aspect-ratio: 1;
-    border: 1px solid var(--rule-dark);
-    border-radius: var(--radius);
-    display: flex;
-    align-items: flex-end;
-    padding: 14px;
-    font-family: var(--mono);
-    font-size: .68rem;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--honey-soft);
-    background: linear-gradient(160deg, rgba(198,161,91,.20), rgba(198,161,91,.03));
   }
 
   .prinosy { list-style: none; padding: 0; margin: 26px 0 0; }

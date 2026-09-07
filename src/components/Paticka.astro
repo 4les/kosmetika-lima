@@ -8,9 +8,8 @@ const site = kontakt.site;
 <footer class="paticka">
   <div class="wrap">
     <div class="foot">
-      <a class="znacka" href={odkaz('/')}>
-        <span class="znacka__nazev">LIMA</span>
-        <span class="znacka__sub">Kosmetika · {kontakt.adresa.mesto}</span>
+      <a class="znacka" href={odkaz('/')} aria-label={`${kontakt.nazev} — úvodní stránka`}>
+        <img src={odkaz('/img/logo-svetle.png')} alt={kontakt.nazev} width="290" height="171" />
       </a>
 
       <ul>
@@ -56,16 +55,8 @@ const site = kontakt.site;
   .foot a:hover { border-bottom-color: var(--honey); }
   .foot ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
 
-  .znacka { display: flex; flex-direction: column; line-height: 1; color: var(--linen); text-decoration: none; }
-  .znacka__nazev { font-family: var(--display); font-size: 1.6rem; letter-spacing: .18em; font-weight: 500; }
-  .znacka__sub {
-    font-family: var(--mono);
-    font-size: .56rem;
-    letter-spacing: .34em;
-    text-transform: uppercase;
-    color: var(--on-dark-slaby);
-    margin-top: 5px;
-  }
+  .znacka { display: block; line-height: 0; }
+  .znacka img { width: auto; height: 58px; }
 
   .pravni {
     margin: 34px 0 0;
