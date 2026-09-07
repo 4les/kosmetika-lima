@@ -3,12 +3,12 @@
 
   "nazev": "Kosmetika Lima",
   "provozovatel": "Stanislava Stalzerová",
-  "ico": "DOPLNIT",
+  "ico": "66918791",
   "platceDph": false,
 
   "telefon": "+420 734 334 177",
   "telefonLink": "+420734334177",
-  "email": "DOPLNIT@kosmetika-lima.cz",
+  "email": "info@kosmetika-lima.cz",
 
   "adresa": {
     "ulice": "Pode Zdí 153/21",
@@ -27,7 +27,7 @@
     { "dny": "Sobota", "hodiny": "po domluvě" },
     { "dny": "Neděle", "hodiny": "zavřeno" }
   ],
-  "oteviraciPoznamka": "Termíny domlouvám individuálně. Pokud právě nezvedám telefon, jsem u klientky. Jakmile budu mít volnou chvíli, ozvu se vám zpět.",
+  "oteviraciPoznamka": "Termíny domlouvám individuálně. Pokud právě nezvedám telefon, jsem u klientky. Jakmile budu mít volnou chvíli, ozvu se Vám zpět.",
 
   "site": {
     "instagram": "",

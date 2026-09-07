@@ -102,8 +102,6 @@ do stejné složky na hostingu. Nahrávají se soubory *uvnitř* `dist/`, ne slo
 
 ## Před spuštěním ostrého webu doplnit
 
-- [ ] Skutečná e-mailová adresa v `src/data/kontakt.json` (teď `DOPLNIT@…`)
-- [ ] IČO v `src/data/kontakt.json`
 - [ ] Odkazy na Instagram a Facebook, nebo je nechat prázdné (pak se v patičce nezobrazí)
 - [ ] Skutečná fotka prostředí salonu — nahradit `src/assets/salon.jpg`
 - [ ] Projít a doplnit `src/pages/ochrana-udaju.astro`
@@ -135,3 +133,9 @@ Doporučené formáty: WebP pro fotky, PNG pro logo s průhledností.
 
 **Výjimka:** `public/img/og.jpg` (náhled při sdílení na Facebooku) musí zůstat
 na pevné adrese, proto se otiskem neopatřuje.
+
+## Psaní textů
+
+Zdvořilostní oslovení se na celém webu píše **velkým písmenem**: Vás, Vám,
+Vaše, Vaší. Když budete přidávat nový text, držte se toho — jinak bude web
+nekonzistentní.
