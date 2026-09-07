@@ -105,9 +105,9 @@ const telo = [
     align-items: center;
   }
   .foto {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
+    width: min(100%, 440px);
+    height: auto;
+    justify-self: end;
     border-radius: var(--radius);
     background: var(--linen-deep);
   }
@@ -148,6 +148,6 @@ const telo = [
 
   @media (max-width: 900px) {
     .dvojice { grid-template-columns: 1fr; }
-    .foto { max-width: 400px; }
+    .foto { width: min(100%, 340px); justify-self: start; }
   }
 </style>

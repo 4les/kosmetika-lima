@@ -148,9 +148,9 @@ const ukazka = vyber
   .hero { padding: clamp(44px, 7vw, 84px) 0 clamp(52px, 7vw, 88px); }
   .hero__mrizka {
     display: grid;
-    grid-template-columns: 1.08fr .92fr;
-    gap: clamp(32px, 5vw, 68px);
-    align-items: end;
+    grid-template-columns: 1.15fr .85fr;
+    gap: clamp(28px, 4.5vw, 60px);
+    align-items: center;
   }
   .hero h1 em { font-style: italic; color: var(--petrol); }
   .hero__text { margin-top: 26px; max-width: 44ch; }
@@ -167,19 +167,25 @@ const ukazka = vyber
   .fakta dt { font-family: var(--mono); font-size: .95rem; font-weight: 500; }
   .fakta dd { margin: 0; font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
 
-  .portret { position: relative; margin: 0; }
+  .portret {
+    position: relative;
+    margin: 0;
+    /* Strop šířky. Bez něj fotka na širokém monitoru naroste
+       a vytlačí celý úvod pod okraj obrazovky. */
+    width: min(100%, 400px);
+    justify-self: end;
+  }
   .portret img {
     width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: center top;
+    height: auto;          /* celá fotka, nikdy oříznutá */
     border-radius: var(--radius);
     background: var(--linen-deep);
   }
   .portret figcaption {
     position: absolute;
-    left: -14px;
-    bottom: 26px;
+    left: -12px;
+    right: 32px;
+    bottom: 22px;
     background: var(--shell);
     padding: 14px 20px;
     border-radius: 12px;
@@ -214,9 +220,8 @@ const ukazka = vyber
     align-items: center;
   }
   .foto {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
+    width: min(100%, 440px);
+    height: auto;
     border-radius: var(--radius);
     background: var(--linen-deep);
   }
@@ -260,9 +265,9 @@ const ukazka = vyber
 
   @media (max-width: 900px) {
     .hero__mrizka, .dvojice { grid-template-columns: 1fr; }
-    .portret { order: -1; max-width: 380px; }
+    .portret { order: -1; width: min(100%, 300px); justify-self: center; }
 
     .dvojice--obraceno .foto { order: 2; }
-    .foto { max-width: 400px; }
+    .foto { width: min(100%, 340px); }
   }
 </style>

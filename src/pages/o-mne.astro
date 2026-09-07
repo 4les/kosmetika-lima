@@ -70,9 +70,8 @@ import { odkaz } from '../lib/odkaz';
     align-items: start;
   }
   .portret {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+    width: min(100%, 380px);
+    height: auto;
     border-radius: var(--radius);
     background: var(--linen-deep);
   }
@@ -96,6 +95,6 @@ import { odkaz } from '../lib/odkaz';
   }
   @media (max-width: 900px) {
     .dvojice { grid-template-columns: 1fr; }
-    .portret { max-width: 340px; }
+    .portret { width: min(100%, 300px); }
   }
 </style>
