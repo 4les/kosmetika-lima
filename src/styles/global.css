@@ -31,10 +31,14 @@
   --stin-vyrazny: rgba(48, 51, 48, .16);
   --hlavicka-pozadi: rgba(248, 245, 239, .90);
 
-  /* Písma */
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
-  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  /* --- Písma ---------------------------------------------------------------
+     Playfair Display na nadpisy, Montserrat na text.
+     --mono se používá na čísla, ceny a velká popisková písmena. Je to také
+     Montserrat, jen jinak vysázený — proto zůstal starý název proměnné.
+  */
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 
   /* Rozměry */
   --wrap: 1180px;
@@ -58,7 +62,9 @@ body {
   color: #303330;
   font-family: var(--body);
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.72;
+  /* Číslice stejné šířky — ceny a délky se pak svisle zarovnají */
+  font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -91,18 +97,18 @@ h1, h2, h3, h4 {
   font-family: var(--display);
   font-weight: 400;
   margin: 0;
-  line-height: 1.08;
-  font-variation-settings: "SOFT" 12, "WONK" 1;
+  line-height: 1.14;
 }
-h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -.02em; }
-h2 { font-size: clamp(1.9rem, 4.2vw, 3rem); letter-spacing: -.015em; }
+h1 { font-size: clamp(2.5rem, 6.2vw, 4.4rem); letter-spacing: -.015em; }
+h2 { font-size: clamp(1.95rem, 4.3vw, 3.05rem); letter-spacing: -.01em; }
 h3 { font-size: clamp(1.2rem, 2.2vw, 1.5rem); }
 p { margin: 0 0 1em; }
 
 .eyebrow {
   font-family: var(--mono);
-  font-size: .68rem;
-  letter-spacing: .22em;
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--honey-text);
   margin: 0 0 18px;
