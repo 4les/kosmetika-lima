@@ -27,7 +27,8 @@ build spadne, takže se rozbitý web na hosting nedostane.
 | `src/data/kontakt.json` | telefon, adresa, otevírací doba, IČO, značky |
 | `src/data/faq.json` | časté dotazy |
 | `src/styles/global.css` | barvy a rozměry — vše nahoře v `:root` |
-| `public/img/` | fotky |
+| `src/assets/` | fotky použité na webu |
+| `public/img/og.jpg` | náhled při sdílení na sítích |
 | `public/.htaccess` | přesměrování, cache, bezpečnostní hlavičky |
 | `src/pages/` | jednotlivé stránky |
 | `src/lib/odkaz.ts` | pomocná funkce pro interní odkazy |
@@ -104,7 +105,7 @@ do stejné složky na hostingu. Nahrávají se soubory *uvnitř* `dist/`, ne slo
 - [ ] Skutečná e-mailová adresa v `src/data/kontakt.json` (teď `DOPLNIT@…`)
 - [ ] IČO v `src/data/kontakt.json`
 - [ ] Odkazy na Instagram a Facebook, nebo je nechat prázdné (pak se v patičce nezobrazí)
-- [ ] Skutečné fotky místo placeholderů v `public/img/` — zachovat názvy souborů
+- [ ] Skutečná fotka prostředí salonu — nahradit `src/assets/salon.jpg`
 - [ ] Projít a doplnit `src/pages/ochrana-udaju.astro`
 - [ ] Ověřit otevírací dobu v `src/data/kontakt.json`
 
@@ -122,3 +123,15 @@ do stejné složky na hostingu. Nahrávají se soubory *uvnitř* `dist/`, ne slo
 3. Zkontrolovat, že staré adresy přesměrovávají (`/cenik/`, `/kosmetika/`, `/sluzby/`)
 4. Až doběhne přesměrování, smazat starý WordPress a jeho databázi
 5. Aktualizovat odkaz na web v profilu Firma na Googlu
+
+## Výměna fotek
+
+Fotky jsou v `src/assets/`. Nahraďte soubor stejným názvem a pushněte —
+Astro si při sestavení přidá do názvu otisk obsahu (`nastroje.DkfxB3H1.webp`),
+takže se návštěvníkům vždy načte nová verze. Ruční mazání cache není potřeba.
+
+Doporučené formáty: WebP pro fotky, PNG pro logo s průhledností.
+Šířka 1200 px stačí; větší soubory jen zpomalují načítání.
+
+**Výjimka:** `public/img/og.jpg` (náhled při sdílení na Facebooku) musí zůstat
+na pevné adrese, proto se otiskem neopatřuje.

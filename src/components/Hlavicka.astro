@@ -1,4 +1,6 @@
 ---
+import logo from '../assets/logo.png';
+
 import kontakt from '../data/kontakt.json';
 import { odkaz } from '../lib/odkaz';
 
@@ -15,7 +17,7 @@ const zde = Astro.url.pathname;
 <header class="hlavicka">
   <div class="wrap hdr">
     <a class="znacka" href={odkaz('/')} aria-label={`${kontakt.nazev} — úvodní stránka`}>
-      <img src={odkaz('/img/logo.png')} alt={kontakt.nazev} width="290" height="171" />
+      <img src={logo.src} alt={kontakt.nazev} width={logo.width} height={logo.height} />
     </a>
 
     <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">

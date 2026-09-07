@@ -1,4 +1,8 @@
 ---
+import fotoStanislava from '../assets/stanislava.webp';
+import fotoNastroje from '../assets/nastroje.webp';
+import fotoSalon from '../assets/salon.jpg';
+
 import Zaklad from '../layouts/Zaklad.astro';
 import KartaOsetreni from '../components/KartaOsetreni.astro';
 import data from '../data/osetreni.json';
@@ -43,9 +47,9 @@ const ukazka = vyber
 
       <figure class="portret">
         <img
-          src={odkaz('/img/stanislava.webp')}
+          src={fotoStanislava.src}
           alt={`${kontakt.provozovatel}, kosmetička`}
-          width="1040" height="1300"
+          width={fotoStanislava.width} height={fotoStanislava.height}
         />
         <figcaption>
           <b>{kontakt.provozovatel}</b>
@@ -102,15 +106,17 @@ const ukazka = vyber
           <a class="btn btn--ghost" href={odkaz('/madero-terapie/')}>Jak to probíhá</a>
         </div>
       </div>
-      <img class="foto-nastroje" src={odkaz('/img/nastroje.webp')}
-           alt="Sada dřevěných nástrojů pro madero terapii" width="1200" height="958" />
+      <img class="foto-nastroje" src={fotoNastroje.src}
+           alt="Sada dřevěných nástrojů pro madero terapii"
+           width={fotoNastroje.width} height={fotoNastroje.height} />
     </div>
   </section>
 
   <!-- O MNĚ -->
   <section class="band">
     <div class="wrap dvojice dvojice--obraceno">
-      <img class="foto" src={odkaz('/img/salon.jpg')} alt="Prostředí salonu" width="900" height="1125" />
+      <img class="foto" src={fotoSalon.src} alt="Prostředí salonu"
+           width={fotoSalon.width} height={fotoSalon.height} />
       <div>
         <p class="eyebrow">O mně</p>
         <h2>Salon vedu sama.<br />To je celý koncept.</h2>

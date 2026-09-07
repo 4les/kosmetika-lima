@@ -1,4 +1,7 @@
 ---
+import fotoNastroje from '../assets/nastroje.webp';
+import fotoMadero from '../assets/madero.webp';
+
 import Zaklad from '../layouts/Zaklad.astro';
 import KartaOsetreni from '../components/KartaOsetreni.astro';
 import data from '../data/osetreni.json';
@@ -46,8 +49,9 @@ const telo = [
           </a>
         </div>
       </div>
-      <img class="foto-nastroje" src={odkaz('/img/nastroje.webp')}
-           alt="Sada dřevěných nástrojů pro madero terapii" width="1200" height="958" />
+      <img class="foto-nastroje" src={fotoNastroje.src}
+           alt="Sada dřevěných nástrojů pro madero terapii"
+           width={fotoNastroje.width} height={fotoNastroje.height} />
     </div>
   </section>
 
@@ -65,7 +69,9 @@ const telo = [
             <li class="rv"><b>{nazev}</b><span>{text}</span></li>
           ))}
         </ul>
-        <img class="foto" src={odkaz('/img/madero.webp')} alt="Stanislava Stalzerová s dřevěnými nástroji pro madero terapii" width="960" height="1280" />
+        <img class="foto" src={fotoMadero.src}
+             alt="Stanislava Stalzerová s dřevěnými nástroji pro madero terapii"
+             width={fotoMadero.width} height={fotoMadero.height} />
       </div>
     </div>
   </section>

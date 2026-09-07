@@ -1,4 +1,6 @@
 ---
+import fotoPortret from '../assets/stanislava-portret.webp';
+
 import Zaklad from '../layouts/Zaklad.astro';
 import kontakt from '../data/kontakt.json';
 import { odkaz } from '../lib/odkaz';
@@ -10,7 +12,8 @@ import { odkaz } from '../lib/odkaz';
 >
   <section class="band">
     <div class="wrap dvojice">
-      <img class="portret" src={odkaz('/img/stanislava-portret.webp')} alt={kontakt.provozovatel} width="800" height="1066" />
+      <img class="portret" src={fotoPortret.src} alt={kontakt.provozovatel}
+           width={fotoPortret.width} height={fotoPortret.height} />
       <div>
         <p class="eyebrow">O mně</p>
         <h1>Salon vedu sama.<br />To je celý koncept.</h1>
