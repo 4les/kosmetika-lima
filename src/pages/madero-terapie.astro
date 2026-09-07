@@ -46,7 +46,14 @@ const telo = [
           </a>
         </div>
       </div>
-      <img class="foto" src={odkaz('/img/madero.webp')} alt="Dřevěné nástroje pro madero terapii" width="900" height="1125" />
+      <ul class="nastroje" aria-label="Dřevěné nástroje používané při madero terapii">
+        <li>Váleček</li>
+        <li>Kostka</li>
+        <li>Pohár</li>
+        <li>Hřib</li>
+        <li>Deska</li>
+        <li>Lano</li>
+      </ul>
     </div>
   </section>
 
@@ -58,11 +65,14 @@ const telo = [
         Jemnější varianta zaměřená na oblast obličeje, krku a dekoltu. Nejvíc je
         vidět na otocích a na oválu obličeje.
       </p>
-      <ul class="ucinky">
-        {oblicej.map(([nazev, text]) => (
-          <li class="rv"><b>{nazev}</b><span>{text}</span></li>
-        ))}
-      </ul>
+      <div class="dvojice dvojice--foto">
+        <ul class="ucinky ucinky--uzke">
+          {oblicej.map(([nazev, text]) => (
+            <li class="rv"><b>{nazev}</b><span>{text}</span></li>
+          ))}
+        </ul>
+        <img class="foto" src={odkaz('/img/madero.webp')} alt="Stanislava Stalzerová s dřevěnými nástroji pro madero terapii" width="960" height="1280" />
+      </div>
     </div>
   </section>
 
@@ -105,12 +115,32 @@ const telo = [
     align-items: center;
   }
   .foto {
-    width: min(100%, 440px);
+    width: min(100%, 400px);
     height: auto;
     justify-self: end;
     border-radius: var(--radius);
     background: var(--linen-deep);
   }
+
+  /* Fotky patří jen do světlých sekcí. V barevném pásu by ateliérový
+     snímek na bílém pozadí vypadal jako proražená díra. */
+  .nastroje {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  }
+  .nastroje li {
+    aspect-ratio: 1;
+    border: 1px solid var(--rule-dark);
+    border-radius: var(--radius);
+    display: flex; align-items: flex-end; padding: 14px;
+    font-family: var(--mono); font-size: .68rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--honey-soft);
+    background: linear-gradient(160deg, rgba(198,161,91,.20), rgba(198,161,91,.03));
+  }
+
+  .dvojice--foto { margin-top: 32px; align-items: start; }
+  .ucinky--uzke { grid-template-columns: 1fr; margin-top: 0; }
 
   .ucinky {
     list-style: none;
