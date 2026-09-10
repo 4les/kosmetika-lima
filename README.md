@@ -103,7 +103,6 @@ do stejné složky na hostingu. Nahrávají se soubory *uvnitř* `dist/`, ne slo
 ## Před spuštěním ostrého webu doplnit
 
 - [ ] Odkazy na Instagram a Facebook, nebo je nechat prázdné (pak se v patičce nezobrazí)
-- [ ] Skutečná fotka prostředí salonu — nahradit `src/assets/salon.jpg`
 - [ ] Projít a doplnit `src/pages/ochrana-udaju.astro`
 - [ ] Ověřit otevírací dobu v `src/data/kontakt.json`
 
