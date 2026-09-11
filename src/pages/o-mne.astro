@@ -8,7 +8,7 @@ import { odkaz } from '../lib/odkaz';
 
 <Zaklad
   titulek="O mně"
-  popis="Stanislava Stalzerová — kosmetička v Hlučíně. Individuální péče o pleť, přírodní kosmetika Merllin a Palatine, laser Sparidonn."
+  popis="Stanislava Stalzerová, kosmetička v Hlučíně. Salon vedu sama, takže mám na každou klientku dostatek času. Pracuji s kosmetikou Merllin a Palatine."
 >
   <section class="band">
     <div class="wrap dvojice">
@@ -16,20 +16,26 @@ import { odkaz } from '../lib/odkaz';
            width={fotoPortret.width} height={fotoPortret.height} />
       <div>
         <p class="eyebrow">O mně</p>
-        <h1>Salon vedu sama.<br />To je celý koncept.</h1>
+        <h1>Čas jen pro Vás.</h1>
         <p class="lede" style="margin-top:22px">
-          Jmenuji se {kontakt.provozovatel} a mým cílem je, abyste se cítila krásně
-          a spokojeně ve své vlastní kůži.
+          Jmenuji se {kontakt.provozovatel} a mým přáním je, abyste se cítila
+          dobře a spokojeně ve své vlastní kůži.
         </p>
         <p>
-          Ke každé klientce přistupuji individuálně. Ošetření skládám podle toho, co
-          pleť zrovna potřebuje — ne podle ceníkové položky. Specializuji se na
-          kosmetické ošetření pleti, kosmetické masáže, madero terapii pleti i těla,
-          dermapen, galvanizaci, úpravu a laminaci obočí a řas a depilaci.
+          Salon vedu sama, a proto mám na každou klientku dostatek času a
+          prostoru. Ošetření probíhá v klidu a bez zbytečného spěchu. Chci,
+          abyste odcházela nejen s pocitem dobře ošetřené pleti, ale také
+          s příjemným pocitem, že jste si na chvíli udělala čas sama pro sebe.
         </p>
         <p>
-          Ráda poradím s péčí o pleť i s produkty, které Vašemu typu pleti sednou.
-          V salonu je klid — žádná čekárna, žádné překrývající se objednávky.
+          Věnuji se kosmetickému ošetření pleti, kosmetickým masážím,
+          maderoterapii pleti i těla, mikrojehličkování, galvanizaci, úpravě
+          a laminaci obočí a řas a depilaci. Každé ošetření přizpůsobuji tomu,
+          co Vaše pleť právě potřebuje.
+        </p>
+        <p>
+          Ráda Vám poradím i s domácí péčí a s produkty, které Vašemu typu pleti
+          vyhovují, pokud o doporučení budete mít zájem.
         </p>
       </div>
     </div>
@@ -40,9 +46,9 @@ import { odkaz } from '../lib/odkaz';
       <p class="eyebrow">Čím pracuji</p>
       <h2>Kosmetika a přístroje</h2>
       <p class="lede" style="margin-top:18px">
-        Používám pouze kvalitní a přírodní produkty značek Merllin a Palatine,
-        které jsou šetrné k pleti. Ve spojení s laserem Sparidonn se jejich účinek
-        ještě znásobuje.
+        Pracuji s kvalitními přírodními produkty značek Merllin a Palatine, které
+        jsou k pleti šetrné. Ve spojení s laserem Sparidonn se jejich účinek ještě
+        znásobuje, protože pleť dokáže aktivní látky lépe přijmout.
       </p>
       <div class="znacky">
         {kontakt.znacky.map((z) => <span>{z}</span>)}
@@ -53,9 +59,10 @@ import { odkaz } from '../lib/odkaz';
   <section class="band band--pine band--tight">
     <div class="wrap vyzva">
       <div>
-        <h2>Přijďte se podívat.</h2>
+        <h2>Přijďte se podívat</h2>
         <p class="lede" style="margin-top:14px">
-          Ať už hledáte profesionální ošetření, nebo jen chvilku pro sebe.
+          Ať už hledáte profesionální ošetření pleti, nebo si chcete jen na chvíli
+          odpočinout, ráda Vás v salonu přivítám.
         </p>
       </div>
       <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>

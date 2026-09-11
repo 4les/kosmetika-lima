@@ -135,6 +135,16 @@ na pevné adrese, proto se otiskem neopatřuje.
 
 ## Psaní textů
 
-Zdvořilostní oslovení se na celém webu píše **velkým písmenem**: Vás, Vám,
-Vaše, Vaší. Když budete přidávat nový text, držte se toho — jinak bude web
-nekonzistentní.
+Pravidla, kterými se řídí celý web. Když budete přidávat nový text, držte se
+jich, jinak začne být web nesourodý.
+
+- **Zdvořilostní oslovení velkým písmenem:** Vás, Vám, Vaše, Vaší.
+- **Celé věty, ne hesla.** Ne „Jedna klientka, jeden termín, žádný spěch.",
+  ale „Salon vedu sama, a proto mám na každou klientku dostatek času."
+- **Vysvětlovat, ne tvrdit.** Místo „Dřevo místo přístroje." raději popsat,
+  co metoda dělá a k čemu je.
+- **První osoba jednotného čísla.** Salon vede jeden člověk, ne firma.
+- **Bez reklamních kontrastů** typu „X, ne Y" a bez vět zakončených pomlčkou
+  s dovětkem. Působí to odsekle.
+- **Maderoterapie se píše jedním slovem.** Adresa `/madero-terapie/` zůstává,
+  ta se návštěvníkům nezobrazuje.

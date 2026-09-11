@@ -8,40 +8,45 @@ import data from '../data/osetreni.json';
 import kontakt from '../data/kontakt.json';
 import { odkaz } from '../lib/odkaz';
 
-const madero = data.osetreni.filter((o) => o.skupina === 'Madero terapie');
+const madero = data.osetreni.filter((o) => o.skupina === 'Maderoterapie');
 
 const oblicej = [
-  ['Zlepšení cirkulace', 'Podpora krevního oběhu, přísun kyslíku a živin do pokožky.'],
-  ['Detoxikace', 'Rozhýbání lymfatického systému a odvod toxinů.'],
-  ['Redukce vrásek', 'Stimulace tvorby kolagenu a elastinu.'],
-  ['Zpevnění pleti', 'Zlepšení tonusu a pevnosti, viditelně na oválu obličeje.'],
-  ['Redukce otoků', 'Zmírnění otoků a kruhů pod očima.'],
-  ['Hloubkové čištění pórů', 'Odstranění odumřelých buněk.'],
+  ['Prokrvení pleti', 'Masáž podporuje krevní oběh, takže se do pokožky snáze dostává kyslík i živiny.'],
+  ['Podpora lymfatického systému', 'Rozproudí lymfu a pomáhá tělu odvádět to, co v něm zbytečně zůstává.'],
+  ['Podpora regenerace', 'Stimuluje tvorbu kolagenu a elastinu, které pleť potřebuje pro svou pružnost.'],
+  ['Pevnost a kontury', 'Pomáhá zlepšit napětí pleti, nejvíce je to znát na oválu obličeje.'],
+  ['Otoky a kruhy pod očima', 'Zmírňuje otoky a projasňuje oblast kolem očí.'],
+  ['Čistší pleť', 'Napomáhá odstranění odumřelých buněk a pleť po ošetření lépe dýchá.'],
 ];
 
 const telo = [
-  ['Redukce celulitidy', 'Rozbití tukových uzlíků a zlepšení struktury pokožky.'],
-  ['Podpora lymfy', 'Odvod toxinů a snížení zadržované vody.'],
-  ['Zlepšení krevního oběhu', 'Lepší výživa tkání a rychlejší regenerace.'],
-  ['Úleva od bolesti', 'Uvolnění přetížených a ztuhlých svalů.'],
-  ['Zpevnění a tvarování', 'Formování postavy a zlepšení elasticity kůže.'],
-  ['Uvolnění a energie', 'Hluboká relaxace, pocit lehkosti po proceduře.'],
+  ['Struktura pokožky', 'Pomáhá rozrušit tukové uzlíky a postupně zlepšuje strukturu pokožky.'],
+  ['Podpora lymfatického systému', 'Podporuje odvod přebytečné vody a pocit lehkosti v nohách.'],
+  ['Prokrvení a regenerace', 'Lepší prokrvení znamená i rychlejší regeneraci tkání.'],
+  ['Uvolnění svalového napětí', 'Uleví přetíženým a ztuhlým svalům, ať už ze sedavé práce, nebo ze sportu.'],
+  ['Zpevnění a tvarování', 'Podporuje pružnost kůže a pomáhá tvarovat problematické partie.'],
+  ['Celkové uvolnění', 'Po proceduře se většina klientek cítí odpočatě a plná energie.'],
 ];
 ---
 
 <Zaklad
-  titulek="Madero terapie"
-  popis="Madero terapie obličeje a těla v Hlučíně — masáž tvarovanými dřevěnými nástroji pro podporu lymfy, redukci celulitidy a zpevnění pleti."
+  titulek="Maderoterapie"
+  popis="Maderoterapie obličeje a těla v Hlučíně. Masáž tvarovanými dřevěnými nástroji, která podporuje lymfatický systém, prokrvení a celkové uvolnění."
 >
   <section class="band band--pine">
     <div class="wrap dvojice dvojice--nastroje">
       <div>
-        <p class="eyebrow">Madero terapie</p>
-        <h1>Dřevo místo přístroje.</h1>
+        <p class="eyebrow">Maderoterapie</p>
+        <h1>Masáž dřevěnými nástroji</h1>
         <p class="lede" style="margin-top:22px">
-          Masážní technika se soustavou tvarovaných dřevěných nástrojů — válečků,
-          pohárů a desek. Každý tvar má svoje místo a svůj úkol. Žádná elektronika,
-          jen tlak, rytmus a ruce.
+          Maderoterapie využívá speciálně tvarované dřevěné nástroje a masážní
+          techniky, které podporují lymfatický systém, prokrvení a celkové
+          uvolnění.
+        </p>
+        <p class="lede" style="margin-top:14px">
+          Každý z nástrojů má svůj tvar i své využití. Podle toho, na jakou
+          oblast se při ošetření zaměřujeme, volím jejich kombinaci i intenzitu
+          masáže.
         </p>
         <div class="tlacitka">
           <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
@@ -50,7 +55,7 @@ const telo = [
         </div>
       </div>
       <img class="foto-nastroje" src={fotoNastroje.src}
-           alt="Sada dřevěných nástrojů pro madero terapii"
+           alt="Sada dřevěných nástrojů pro maderoterapii"
            width={fotoNastroje.width} height={fotoNastroje.height} />
     </div>
   </section>
@@ -58,10 +63,10 @@ const telo = [
   <section class="band">
     <div class="wrap">
       <p class="eyebrow">Obličej, krk a dekolt</p>
-      <h2>Madero terapie obličeje</h2>
+      <h2>Maderoterapie obličeje</h2>
       <p class="lede" style="margin-top:18px">
-        Jemnější varianta zaměřená na oblast obličeje, krku a dekoltu. Nejvíc je
-        vidět na otocích a na oválu obličeje.
+        Jemnější varianta určená pro oblast obličeje, krku a dekoltu. Zaměřuje se
+        především na kontury a na podporu přirozené regenerace pleti.
       </p>
       <div class="dvojice dvojice--foto">
         <ul class="ucinky ucinky--uzke">
@@ -70,7 +75,7 @@ const telo = [
           ))}
         </ul>
         <img class="foto" src={fotoMadero.src}
-             alt="Stanislava Stalzerová s dřevěnými nástroji pro madero terapii"
+             alt="Stanislava Stalzerová s dřevěnými nástroji pro maderoterapii"
              width={fotoMadero.width} height={fotoMadero.height} />
       </div>
     </div>
@@ -79,10 +84,11 @@ const telo = [
   <section class="band band--shell">
     <div class="wrap">
       <p class="eyebrow">Celé tělo</p>
-      <h2>Madero terapie těla</h2>
+      <h2>Maderoterapie těla</h2>
       <p class="lede" style="margin-top:18px">
-        Intenzivnější práce zaměřená na celulitidu, zadržovanou vodu a svalové
-        napětí. Nejlepší výsledky přináší v sérii.
+        Intenzivnější varianta, která pomáhá uvolnit napětí a zaměřit se na
+        problematické partie. Nejlépe se osvědčuje v sérii, kdy na sebe
+        jednotlivé procedury navazují.
       </p>
       <ul class="ucinky">
         {telo.map(([nazev, text]) => (
@@ -95,13 +101,14 @@ const telo = [
   <section class="band">
     <div class="wrap">
       <p class="eyebrow">Ceny a délka</p>
-      <h2>Varianty procedur</h2>
+      <h2>Varianty a ceny</h2>
       <div class="karty">
         {madero.map((o) => <KartaOsetreni osetreni={o} />)}
       </div>
       <p class="poznamka">
-        Série vychází levněji než jednotlivé návštěvy a hlavně má znatelně lepší
-        efekt — u těla doporučuji minimálně pět procedur.
+        Série vychází výhodněji než jednotlivé návštěvy a hlavně přináší
+        znatelně lepší výsledky. U maderoterapie těla proto doporučuji
+        absolvovat alespoň pět procedur.
       </p>
     </div>
   </section>

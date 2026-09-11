@@ -19,17 +19,18 @@ const ukazka = vyber
 
 <Zaklad
   titulek="Kosmetika a péče o pleť"
-  popis="Kosmetické a přístrojové ošetření pleti, madero terapie, obočí a depilace v Hlučíně. Individuální péče bez spěchu, objednávky na telefonu."
+  popis="Kosmetická a přístrojová ošetření pleti, maderoterapie, úprava obočí a depilace v Hlučíně. Každé ošetření přizpůsobuji Vaší pleti. Objednávky na telefonu."
 >
   <!-- ÚVOD -->
   <section class="hero">
     <div class="wrap hero__mrizka">
       <div>
         <p class="eyebrow">Kosmetický salon · {kontakt.adresa.mesto}</p>
-        <h1>Péče o pleť,<br />kterou <em>skládám</em><br />podle Vaší pleti.</h1>
+        <h1>Péče o pleť podle toho,<br /><em>co právě potřebuje.</em></h1>
         <p class="lede hero__text">
-          Kosmetické a přístrojové ošetření, madero terapie, obočí a depilace.
-          Jedna klientka, jeden termín, žádný spěch.
+          Kosmetická a přístrojová ošetření, maderoterapie, úprava obočí a
+          depilace. Každé ošetření přizpůsobuji Vaší pleti, jejímu aktuálnímu
+          stavu a tomu, co od péče očekáváte.
         </p>
         <div class="tlacitka">
           <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
@@ -39,9 +40,9 @@ const ukazka = vyber
         </div>
 
         <dl class="fakta">
-          <div><dt>1 : 1</dt><dd>bez čekárny</dd></div>
+          <div><dt>Individuálně</dt><dd>čas jen pro Vás</dd></div>
           <div><dt>{kontakt.adresa.ulice}</dt><dd>{kontakt.adresa.mesto}</dd></div>
-          <div><dt>Dle objednávek</dt><dd>termín po telefonu</dd></div>
+          <div><dt>Po telefonu</dt><dd>termín domluvíme spolu</dd></div>
         </dl>
       </div>
 
@@ -62,11 +63,16 @@ const ukazka = vyber
   <!-- CO ŘEŠÍTE -->
   <section class="band band--shell">
     <div class="wrap">
-      <p class="eyebrow">Kde začít</p>
-      <h2>Řekněte mi, co řešíte.</h2>
+      <p class="eyebrow">Péče na míru</p>
+      <h2>Každá pleť je jiná.</h2>
       <p class="lede" style="margin-top:18px">
-        Nemusíte znát názvy přístrojů ani metod. Stačí vědět, co Vás trápí —
-        vybrat správné ošetření už je moje práce.
+        Někdy potřebuje především hydrataci a výživu, jindy hloubkové čištění,
+        zklidnění nebo podporu pevnosti a pružnosti. Společně vybereme péči,
+        která bude dávat smysl právě pro Vás.
+      </p>
+      <p class="lede" style="margin-top:14px">
+        Nemusíte znát názvy jednotlivých metod ani vědět, které ošetření si
+        vybrat. Ráda Vám poradím a vše vysvětlím.
       </p>
 
       <div class="rozcestnik">
@@ -89,21 +95,26 @@ const ukazka = vyber
   <section class="band band--pine">
     <div class="wrap dvojice dvojice--nastroje">
       <div>
-        <p class="eyebrow">Madero terapie</p>
-        <h2>Dřevo místo přístroje.</h2>
+        <p class="eyebrow">Maderoterapie</p>
+        <h2>Maderoterapie</h2>
         <p class="lede" style="margin-top:18px">
-          Masážní technika se soustavou tvarovaných dřevěných nástrojů. Na obličeji
-          rozhýbe lymfu a zpevní ovál, na těle rozbíjí uzlíky celulitidy a uvolní
-          přetížené svaly.
+          Maderoterapie využívá speciálně tvarované dřevěné nástroje a masážní
+          techniky, které podporují lymfatický systém, prokrvení a celkové
+          uvolnění.
+        </p>
+        <p class="lede" style="margin-top:14px">
+          Na obličeji se zaměřuje především na kontury a podporu přirozené
+          regenerace pleti. Při péči o tělo pomáhá uvolnit napětí a zaměřit se
+          na problematické partie.
         </p>
         <ul class="prinosy">
-          <li>Podpora lymfy a odvod toxinů</li>
-          <li>Redukce otoků a kruhů pod očima</li>
-          <li>Zpevnění a tvarování postavy</li>
-          <li>Úleva od svalového napětí</li>
+          <li>Podpora lymfatického systému a prokrvení</li>
+          <li>Zmírnění otoků a projasnění oblasti kolem očí</li>
+          <li>Podpora pevnosti pleti a tvarování postavy</li>
+          <li>Uvolnění svalového napětí</li>
         </ul>
         <div class="tlacitka">
-          <a class="btn btn--ghost" href={odkaz('/madero-terapie/')}>Jak to probíhá</a>
+          <a class="btn btn--ghost" href={odkaz('/madero-terapie/')}>Více o maderoterapii</a>
         </div>
       </div>
       <img class="foto-nastroje" src={fotoNastroje.src}
@@ -119,17 +130,24 @@ const ukazka = vyber
            width={fotoSalon.width} height={fotoSalon.height} />
       <div>
         <p class="eyebrow">O mně</p>
-        <h2>Salon vedu sama.<br />To je celý koncept.</h2>
+        <h2>Čas jen pro Vás.</h2>
         <p class="lede" style="margin-top:20px">
-          Ke každé klientce přistupuji individuálně — ošetření skládám podle toho,
-          co pleť zrovna potřebuje, ne podle ceníkové položky. Ráda poradím i s
-          domácí péčí.
+          Salon vedu sama, a proto mám na každou klientku dostatek času a
+          prostoru. Ošetření probíhá v klidu a bez zbytečného spěchu.
+        </p>
+        <p class="lede" style="margin-top:14px">
+          Chci, abyste odcházela nejen s pocitem dobře ošetřené pleti, ale také
+          s příjemným pocitem, že jste si na chvíli udělala čas sama pro sebe.
+        </p>
+        <p class="lede" style="margin-top:14px">
+          Součástí péče je i doporučení vhodné domácí péče, pokud o něj budete
+          mít zájem.
         </p>
         <div class="znacky">
           {kontakt.znacky.map((z) => <span>{z}</span>)}
         </div>
         <div class="tlacitka">
-          <a class="btn btn--ghost" href={odkaz('/o-mne/')}>Víc o mně</a>
+          <a class="btn btn--ghost" href={odkaz('/o-mne/')}>Více o mně</a>
         </div>
       </div>
     </div>

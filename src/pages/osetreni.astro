@@ -7,22 +7,22 @@ import faq from '../data/faq.json';
 const kroky = [
   {
     nazev: 'Konzultace a příprava pleti',
-    text: 'Krátce si projdeme, co pleť dělá a co od ošetření čekáte. Následuje šetrné odlíčení a příprava.',
+    text: 'Na začátku si krátce projdeme, jak se Vaše pleť chová a co od ošetření očekáváte. Následuje šetrné odlíčení a příprava pleti.',
   },
   {
     nazev: 'Vlastní ošetření',
-    text: 'Postup i intenzitu volím podle toho, jak pleť reaguje. U přístrojových ošetření kombinuji metody podle cíle.',
+    text: 'Postup i intenzitu volím podle toho, jak pleť během ošetření reaguje. U přístrojových ošetření kombinuji jednotlivé metody podle toho, čeho chceme dosáhnout.',
   },
   {
     nazev: 'Zklidnění a ochrana',
-    text: 'Maska nebo sérum a závěrečná péče. Na konec doporučím, jak v péči pokračovat doma.',
+    text: 'Ošetření zakončím maskou nebo sérem a závěrečnou péčí. Na konec Vám ráda doporučím, jak v péči pokračovat doma.',
   },
 ];
 ---
 
 <Zaklad
   titulek="Ošetření a ceník"
-  popis="Přehled všech ošetření včetně cen a délky — kosmetické a přístrojové ošetření pleti, madero terapie, obočí, depilace a IPL. Vyfiltrujte si podle toho, co řešíte."
+  popis="Přehled ošetření včetně cen a předpokládané délky. Kosmetická a přístrojová ošetření pleti, maderoterapie, úprava obočí a řas, depilace a IPL."
 >
   <section class="band band--tight uvod">
     <div class="wrap">
@@ -59,8 +59,9 @@ const kroky = [
         ))}
       </ol>
       <p class="poznamka">
-        Doporučení: u většiny ošetření přinese výraznější efekt série 3–6 návštěv.
-        U maderoterapie těla doporučuji minimálně pět procedur.
+        U většiny ošetření přinese výraznější výsledky série tří až šesti
+        návštěv, protože jednotlivé procedury na sebe navazují. U maderoterapie
+        těla doporučuji absolvovat alespoň pět procedur.
       </p>
     </div>
   </section>
@@ -84,8 +85,11 @@ const kroky = [
   <section class="band band--pine band--tight">
     <div class="wrap vyzva">
       <div>
-        <h2>Nevíte, co si vybrat?</h2>
-        <p class="lede" style="margin-top:14px">Zavolejte a probereme to. Poradím i po telefonu.</p>
+        <h2>Nejste si jistá výběrem?</h2>
+        <p class="lede" style="margin-top:14px">
+          Zavolejte mi a vše spolu v klidu probereme. Ráda Vám poradím i po
+          telefonu.
+        </p>
       </div>
       <a class="btn btn--primary" href={`tel:${kontakt.telefonLink}`}>
         Zavolat <span class="btn__num">{kontakt.telefon}</span>
