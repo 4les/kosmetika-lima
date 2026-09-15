@@ -1,15 +1,31 @@
 {
   "_navod": "Tento soubor řídí celý přehled ošetření i ceník. Změna ceny = přepsání hodnoty 'cena'. Nové ošetření = zkopírovat celý blok { ... } a upravit. Pozor na čárky mezi bloky a na to, že poslední blok čárkou NEkončí. Hodnoty v 'resi' musí odpovídat některému 'id' z kategorií nahoře.",
-
   "kategorie": [
-    { "id": "akne", "nazev": "Akné a nečistoty" },
-    { "id": "vrasky", "nazev": "Vrásky a lifting" },
-    { "id": "unava", "nazev": "Unavená pleť" },
-    { "id": "telo", "nazev": "Postava a celulitida" },
-    { "id": "oboci", "nazev": "Obočí a řasy" },
-    { "id": "chloupky", "nazev": "Chloupky" }
+    {
+      "id": "akne",
+      "nazev": "Akné a nečistoty"
+    },
+    {
+      "id": "vrasky",
+      "nazev": "Vrásky a lifting"
+    },
+    {
+      "id": "unava",
+      "nazev": "Unavená pleť"
+    },
+    {
+      "id": "telo",
+      "nazev": "Postava a celulitida"
+    },
+    {
+      "id": "oboci",
+      "nazev": "Obočí a řasy"
+    },
+    {
+      "id": "chloupky",
+      "nazev": "Chloupky"
+    }
   ],
-
   "osetreni": [
     {
       "id": "cistici-osetreni",
@@ -17,8 +33,11 @@
       "skupina": "Kosmetické ošetření",
       "popis": "Hloubkové vyčištění pórů určené pro problematickou a aknózní pleť. Ošetření zakončím zklidněním a ochranou.",
       "delka": "50 min",
-      "cena": "850 Kč",
-      "resi": ["akne", "unava"]
+      "cena": "990 Kč",
+      "resi": [
+        "akne",
+        "unava"
+      ]
     },
     {
       "id": "relaxacni-anti-age",
@@ -27,7 +46,10 @@
       "popis": "Vyčištění pleti do hloubky spojené s kosmetickou masáží obličeje. Vhodné, pokud chcete spojit péči o pleť s odpočinkem.",
       "delka": "60 min",
       "cena": "950 Kč",
-      "resi": ["vrasky", "unava"]
+      "resi": [
+        "vrasky",
+        "unava"
+      ]
     },
     {
       "id": "anti-stress",
@@ -36,16 +58,20 @@
       "popis": "Ošetření zaměřené na zklidnění pleti i mysli. Součástí je prodloužená masáž obličeje, krku a dekoltu.",
       "delka": "60 min",
       "cena": "950 Kč",
-      "resi": ["unava"]
+      "resi": [
+        "unava"
+      ]
     },
     {
       "id": "liftingove-osetreni",
       "nazev": "Liftingové ošetření",
       "skupina": "Kosmetické ošetření",
       "popis": "Určeno pro pleť, která ztrácí pevnost a potřebuje podpořit. Jde o nejintenzivnější z klasických ošetření.",
-      "delka": "80 min",
-      "cena": "1 200 Kč",
-      "resi": ["vrasky"]
+      "delka": "90 min",
+      "cena": "1 450 Kč",
+      "resi": [
+        "vrasky"
+      ]
     },
     {
       "id": "mikrodermabraze",
@@ -54,7 +80,10 @@
       "popis": "Hloubkový peeling, který pomáhá sjednotit tón pleti a odstranit odumřelé buňky. Působí také preventivně proti akné.",
       "delka": "cca 60 min",
       "cena": "990 Kč",
-      "resi": ["akne", "unava"]
+      "resi": [
+        "akne",
+        "unava"
+      ]
     },
     {
       "id": "derma-pen",
@@ -63,7 +92,9 @@
       "popis": "Podporuje tvorbu kolagenu a elastinu a pomáhá zjemnit vrásky. Doporučuji absolvovat sérii pěti ošetření.",
       "delka": "1. ošetření",
       "cena": "1 250–1 500 Kč",
-      "resi": ["vrasky"]
+      "resi": [
+        "vrasky"
+      ]
     },
     {
       "id": "laser-sparidonn",
@@ -72,7 +103,11 @@
       "popis": "Studený laser podporující regeneraci pleti a lepší vstřebání aktivních látek. Nejlépe se osvědčuje v sérii.",
       "delka": "jednorázově / 10×",
       "cena": "190 / 1 700 Kč",
-      "resi": ["akne", "unava", "vrasky"]
+      "resi": [
+        "akne",
+        "unava",
+        "vrasky"
+      ]
     },
     {
       "id": "balicek-pristrojovy",
@@ -81,7 +116,11 @@
       "popis": "Podle stavu pleti kombinuji plazmový tok s ozonem, radiofrekvenci, ultrazvuk, nanohydrataci, elektroforézu, EMS mikropulzy a fotonovou terapii. Zaměřit se můžeme na hloubkové čištění, omlazení, akné, tmavé kruhy nebo pigmentové skvrny.",
       "delka": "60–90 min",
       "cena": "1 200–2 500 Kč",
-      "resi": ["akne", "vrasky", "unava"],
+      "resi": [
+        "akne",
+        "vrasky",
+        "unava"
+      ],
       "zvyraznit": true
     },
     {
@@ -91,7 +130,10 @@
       "popis": "Masáž dřevěnými nástroji v oblasti obličeje, krku a dekoltu. Rozproudí lymfu, zmírní otoky a podpoří kontury.",
       "delka": "60 min",
       "cena": "850 Kč",
-      "resi": ["vrasky", "unava"]
+      "resi": [
+        "vrasky",
+        "unava"
+      ]
     },
     {
       "id": "madero-plet",
@@ -100,7 +142,10 @@
       "popis": "Samostatná procedura bez masky a laseru. Nejlepších výsledků dosáhnete v sérii pěti návštěv.",
       "delka": "40 min · série 5×",
       "cena": "550 / 2 500 Kč",
-      "resi": ["vrasky", "unava"]
+      "resi": [
+        "vrasky",
+        "unava"
+      ]
     },
     {
       "id": "madero-telo",
@@ -108,8 +153,10 @@
       "skupina": "Maderoterapie",
       "popis": "Zaměřuje se na strukturu pokožky, zadržovanou vodu a svalové napětí. Série pěti nebo deseti procedur je cenově zvýhodněná.",
       "delka": "60 min · 5× · 10×",
-      "cena": "850 / 4 000 / 7 500 Kč",
-      "resi": ["telo"]
+      "cena": "950 / 4 600 / 9 000 Kč",
+      "resi": [
+        "telo"
+      ]
     },
     {
       "id": "oboci-barveni",
@@ -118,7 +165,9 @@
       "popis": "Tvar obočí volím podle proporcí Vašeho obličeje. Ošetření lze doplnit i o barvení řas.",
       "delka": "obočí / + řasy",
       "cena": "250 / 370 Kč",
-      "resi": ["oboci"]
+      "resi": [
+        "oboci"
+      ]
     },
     {
       "id": "laminace-oboci",
@@ -127,7 +176,9 @@
       "popis": "Srovná a zafixuje chloupky do jednoho směru. Výsledek vydrží přibližně šest týdnů.",
       "delka": "cca 60 min",
       "cena": "750 Kč",
-      "resi": ["oboci"]
+      "resi": [
+        "oboci"
+      ]
     },
     {
       "id": "lash-lifting",
@@ -136,7 +187,9 @@
       "popis": "Přirozené zvednutí vlastních řas bez použití umělých. Součástí ošetření je i barvení.",
       "delka": "cca 60 min",
       "cena": "850 Kč",
-      "resi": ["oboci"]
+      "resi": [
+        "oboci"
+      ]
     },
     {
       "id": "depilace-oblicej",
@@ -145,7 +198,9 @@
       "popis": "Horní ret 70 Kč, brada 70 Kč, tváře 150 Kč. Lze kombinovat s úpravou obočí.",
       "delka": "15–25 min",
       "cena": "od 70 Kč",
-      "resi": ["chloupky"]
+      "resi": [
+        "chloupky"
+      ]
     },
     {
       "id": "depilace-telo",
@@ -154,7 +209,9 @@
       "popis": "Podpaží 270 Kč, třísla 270 Kč, nohy po kolena 350 Kč, celé nohy 650 Kč, záda 350 až 550 Kč.",
       "delka": "20–60 min",
       "cena": "od 270 Kč",
-      "resi": ["chloupky"]
+      "resi": [
+        "chloupky"
+      ]
     },
     {
       "id": "ipl",
@@ -163,7 +220,9 @@
       "popis": "Metoda využívající intenzivní pulzní světlo. Cena i počet opakování závisí na Vašem fototypu, proto vše probereme na konzultaci.",
       "delka": "podpaží · třísla · nohy",
       "cena": "150–550 Kč",
-      "resi": ["chloupky"]
+      "resi": [
+        "chloupky"
+      ]
     }
   ]
 }
