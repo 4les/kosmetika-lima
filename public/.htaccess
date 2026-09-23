@@ -3,7 +3,16 @@
 #  Tento soubor se z public/ automaticky kopíruje do dist/ a nahraje na hosting.
 # =============================================================================
 
+# --- Který soubor se má načíst jako výchozí ---------------------------------
+# DŮLEŽITÉ při přechodu z WordPressu: pokud v /www/ ještě zůstal jeho index.php,
+# některé servery ho zkoušejí dřív než index.html a pořád by se zobrazoval
+# starý web. Tímhle je pořadí dané napevno.
+DirectoryIndex index.html index.php
+
 # --- HTTPS a jedna kanonická adresa -----------------------------------------
+# Kdyby po nasazení stránka hlásila příliš mnoho přesměrování, zakomentujte
+# tři řádky s HTTPS níže a napište mi. Znamená to, že hosting o šifrovaném
+# spojení informuje jinou cestou.
 RewriteEngine On
 
 # Vynutit https
